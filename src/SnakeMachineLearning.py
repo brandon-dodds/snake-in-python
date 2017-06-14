@@ -6,6 +6,7 @@ import pygame as pg
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+GREEN = (42, 201, 42)
 HEIGHT = 16
 WIDTH = 16
 MARGIN = 3
@@ -20,6 +21,11 @@ for row in range(AMOUNT_PER_LINE):
     grid.append([])
     for column in range(AMOUNT_PER_LINE):
         grid[row].append(0)  # Append a cell
+
+
+def snake(x, y):
+    grid[x][y] = 1
+
 
 pg.init()
 
@@ -39,6 +45,9 @@ while not done:
         if event.type == pg.MOUSEBUTTONDOWN:
             print("Exiting...")
             done = True
+        elif event.type == pg.K_q:
+            print("Initializing snake...")
+            snake(8, 8)
 
     screen.fill(BLACK)
 
@@ -46,6 +55,8 @@ while not done:
     for row in range(AMOUNT_PER_LINE):
         for column in range(AMOUNT_PER_LINE):
             color = WHITE
+            if grid[row][column] == 1:
+                color = GREEN
             pg.draw.rect(screen,
                          color,
                          [(MARGIN + WIDTH) * column + MARGIN,
