@@ -21,11 +21,11 @@ for row in range(AMOUNT_PER_LINE):
     for column in range(AMOUNT_PER_LINE):
         grid[row].append(0)  # Creates a 2d array which my grid will be based.
 
-# Some global variables. TODO I could probably delete these and just global the x and y values.
+# Some global variables.
 
 newX = 0
 newY = 0
-
+directionFacing = "UP"
 
 # Creating the snake itself. TODO I need to add actual snake functionality.
 
@@ -42,6 +42,8 @@ def snake(y, x):
     newY = y
     print("X coord is {0}. Y coord is {1}".format(newX, newY))
 
+
+# TODO I need to add random items for the snake to pick up and a scoreboard for my machine learning bot.
 
 pg.init()
 
@@ -64,28 +66,37 @@ snake(8, 8)
 while not done:
 
     for event in pg.event.get():
+        # QUITTING THE PROGRAM.
         if event.type == pg.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
+
+        # USER INPUT.
+        elif pg.key.get_pressed()[pg.K_q] != 0:
+            done = True
         elif pg.key.get_pressed()[pg.K_w] != 0:
             print("UP")
             grid[newY][newX] = 0
             snake(newY - 1, newX)
             time.sleep(0.25)
+            directionFacing = "UP"
         elif pg.key.get_pressed()[pg.K_a] != 0:
             print("LEFT")
             grid[newY][newX] = 0
             snake(newY, newX - 1)
             time.sleep(0.25)
+            directionFacing = "LEFT"
         elif pg.key.get_pressed()[pg.K_s] != 0:
             print("DOWN")
             grid[newY][newX] = 0
             snake(newY + 1, newX)
             time.sleep(0.25)
+            directionFacing = "DOWN"
         elif pg.key.get_pressed()[pg.K_d] != 0:
             print("RIGHT")
             grid[newY][newX] = 0
             snake(newY, newX + 1)
             time.sleep(0.25)
+            directionFacing = "RIGHT"
 
         elif newX < 0 or newY < 0:
             done = True
