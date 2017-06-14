@@ -8,7 +8,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 HEIGHT = 16
 WIDTH = 16
-MARGIN = 1
+MARGIN = 3
 AMOUNT_PER_LINE = 16
 
 # Create the grid.
@@ -23,7 +23,7 @@ for row in range(AMOUNT_PER_LINE):
 
 pg.init()
 
-WINDOW_SIZE = [272, 272]
+WINDOW_SIZE = [308, 308]
 
 screen = pg.display.set_mode(WINDOW_SIZE)
 
