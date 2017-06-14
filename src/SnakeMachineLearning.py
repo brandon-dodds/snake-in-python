@@ -22,9 +22,16 @@ for row in range(AMOUNT_PER_LINE):
     for column in range(AMOUNT_PER_LINE):
         grid[row].append(0)  # Append a cell
 
+newX = 0
+newY = 0
+
 
 def snake(x, y):
     grid[x][y] = 1
+    global newX
+    newX = x
+    global newY
+    newY = y
 
 
 pg.init()
@@ -39,15 +46,29 @@ done = False
 
 clock = pg.time.Clock()
 
+snake(8, 8)
+
 while not done:
 
     for event in pg.event.get():
-        if event.type == pg.MOUSEBUTTONDOWN:
-            print("Exiting...")
-            done = True
-        elif event.type == pg.K_q:
-            print("Initializing snake...")
-            snake(8, 8)
+        if event.type == pg.QUIT:  # If user clicked close
+            done = True  # Flag that we are done so we exit this loop
+        elif pg.key.get_pressed()[pg.K_w] != 0:
+            print("UP")
+            grid[newX][newY] = 0
+            snake(newX - 1, newY)
+        elif pg.key.get_pressed()[pg.K_a] != 0:
+            print("LEFT")
+            grid[newX][newY] = 0
+            snake(newX, newY - 1)
+        elif pg.key.get_pressed()[pg.K_s] != 0:
+            print("DOWN")
+            grid[newX][newY] = 0
+            snake(newX + 1, newY)
+        elif pg.key.get_pressed()[pg.K_d] != 0:
+            print("RIGHT")
+            grid[newX][newY] = 0
+            snake(newX, newY + 1)
 
     screen.fill(BLACK)
 
