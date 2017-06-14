@@ -21,12 +21,17 @@ newX = 0
 newY = 0
 
 
-def snake(x, y):
-    grid[x][y] = 1
+def snake(y, x):
+    try:
+        grid[y][x] = 1
+    except IndexError:
+        print("You cant do that!")
+        exit()
     global newX
     newX = x
     global newY
     newY = y
+    print("X coord is {0}. Y coord is {1}".format(newX, newY))
 
 
 pg.init()
@@ -50,24 +55,28 @@ while not done:
             done = True  # Flag that we are done so we exit this loop
         elif pg.key.get_pressed()[pg.K_w] != 0:
             print("UP")
-            grid[newX][newY] = 0
-            snake(newX - 1, newY)
+            grid[newY][newX] = 0
+            snake(newY - 1, newX)
             time.sleep(0.25)
         elif pg.key.get_pressed()[pg.K_a] != 0:
             print("LEFT")
-            grid[newX][newY] = 0
-            snake(newX, newY - 1)
+            grid[newY][newX] = 0
+            snake(newY, newX - 1)
             time.sleep(0.25)
         elif pg.key.get_pressed()[pg.K_s] != 0:
             print("DOWN")
-            grid[newX][newY] = 0
-            snake(newX + 1, newY)
+            grid[newY][newX] = 0
+            snake(newY + 1, newX)
             time.sleep(0.25)
         elif pg.key.get_pressed()[pg.K_d] != 0:
             print("RIGHT")
-            grid[newX][newY] = 0
-            snake(newX, newY + 1)
+            grid[newY][newX] = 0
+            snake(newY, newX + 1)
             time.sleep(0.25)
+
+        elif newX < 0 or newY < 0:
+            done = True
+
     screen.fill(BLACK)
 
     for row in range(AMOUNT_PER_LINE):
