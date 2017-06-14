@@ -1,8 +1,7 @@
 # This project was created by subpanda101 on June the 10th, 2017. May the snake begin!
 
 import pygame as pg
-
-# Define constants for each individual colour.
+import time
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -12,12 +11,8 @@ WIDTH = 16
 MARGIN = 3
 AMOUNT_PER_LINE = 16
 
-# Create the grid.
-
 grid = []
 for row in range(AMOUNT_PER_LINE):
-    # Add an empty array that will hold each cell
-    # in this row
     grid.append([])
     for column in range(AMOUNT_PER_LINE):
         grid[row].append(0)  # Append a cell
@@ -57,22 +52,24 @@ while not done:
             print("UP")
             grid[newX][newY] = 0
             snake(newX - 1, newY)
+            time.sleep(0.25)
         elif pg.key.get_pressed()[pg.K_a] != 0:
             print("LEFT")
             grid[newX][newY] = 0
             snake(newX, newY - 1)
+            time.sleep(0.25)
         elif pg.key.get_pressed()[pg.K_s] != 0:
             print("DOWN")
             grid[newX][newY] = 0
             snake(newX + 1, newY)
+            time.sleep(0.25)
         elif pg.key.get_pressed()[pg.K_d] != 0:
             print("RIGHT")
             grid[newX][newY] = 0
             snake(newX, newY + 1)
-
+            time.sleep(0.25)
     screen.fill(BLACK)
 
-    # Define the amount of white squares per line.
     for row in range(AMOUNT_PER_LINE):
         for column in range(AMOUNT_PER_LINE):
             color = WHITE
