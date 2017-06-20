@@ -20,8 +20,6 @@ for row in range(AMOUNT_PER_LINE):
     for column in range(AMOUNT_PER_LINE):
         grid[row].append(0)  # Creates a 2d array which my grid will be based.
 
-# Some global variables.
-
 pg.init()
 
 # The size of the window that will be a constant. Edit if you want the window size to be bigger.
