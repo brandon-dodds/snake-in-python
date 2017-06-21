@@ -12,6 +12,7 @@ WIDTH = 16
 MARGIN = 3
 AMOUNT_PER_LINE = 16
 
+
 # Creating the grid that will be populated.
 
 grid = []
@@ -20,7 +21,16 @@ for row in range(AMOUNT_PER_LINE):
     for column in range(AMOUNT_PER_LINE):
         grid[row].append(0)  # Creates a 2d array which my grid will be based.
 
+
+# Creating the snake object.
+
+class Snake(object):
+    def createsnake(self, x_coordinate, y_coordinate):
+        grid[x_coordinate][y_coordinate] = 2
+
 pg.init()
+
+Snake.createsnake(1, 1)
 
 # The size of the window that will be a constant. Edit if you want the window size to be bigger.
 
@@ -33,8 +43,6 @@ pg.display.set_caption("Snake Game")
 done = False
 
 clock = pg.time.Clock()
-
-# Creates a snake at the coordinates [8,8].
 
 
 while not done:
