@@ -4,7 +4,7 @@ Snake Machine Learning is a version of the snake game written in python. There w
 
 ## Getting Started
 
-In order to get started git clone this project in a directory. You will need to install the packages written in the [requirements.](https://github.com/subpanda101/SnakeMachineLearning/blob/master/requirements.txt) After you have installed the requirements run the base [game.](https://github.com/subpanda101/SnakeMachineLearning/blob/master/src/SnakeMachineLearning.py) Then afterwards open the bot.
+In order to get started git clone this project in a directory. You will need to install the packages written in the [requirements.](https://github.com/subpanda101/SnakeMachineLearning/blob/master/requirements.txt) After you have installed the requirements you can run the base [game.](https://github.com/subpanda101/SnakeMachineLearning/blob/master/src/SnakeMachineLearning.py) Then afterwards open the bot.
 
 ### Prerequisites
 
