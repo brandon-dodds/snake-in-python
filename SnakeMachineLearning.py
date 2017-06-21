@@ -12,7 +12,6 @@ WIDTH = 16
 MARGIN = 3
 AMOUNT_PER_LINE = 16
 
-
 # Creating the grid that will be populated.
 
 grid = []
@@ -35,7 +34,8 @@ class Snake(object):
         print(Snake.x_coordinate)
         print(Snake.y_coordinate)
 
-    def move_snake(self, direction):
+    @staticmethod
+    def move_snake(direction):
         if direction == "UP":
             old_x = Snake.x_coordinate
             old_y = Snake.y_coordinate
@@ -43,6 +43,27 @@ class Snake(object):
             grid[old_x - 1][old_y] = 1
             Snake.x_coordinate = old_x - 1
             print("UP")
+        if direction == "DOWN":
+            old_x = Snake.x_coordinate
+            old_y = Snake.y_coordinate
+            grid[old_x][old_y] = 0
+            grid[old_x + 1][old_y] = 1
+            Snake.x_coordinate = old_x + 1
+            print("DOWN")
+        if direction == "LEFT":
+            old_x = Snake.x_coordinate
+            old_y = Snake.y_coordinate
+            grid[old_x][old_y] = 0
+            grid[old_x][old_y - 1] = 1
+            Snake.y_coordinate = old_y - 1
+            print("LEFT")
+        if direction == "RIGHT":
+            old_x = Snake.x_coordinate
+            old_y = Snake.y_coordinate
+            grid[old_x][old_y] = 0
+            grid[old_x][old_y + 1] = 1
+            Snake.y_coordinate = old_y + 1
+            print("RIGHT")
 
 
 pg.init()
@@ -61,7 +82,6 @@ done = False
 
 clock = pg.time.Clock()
 
-
 while not done:
 
     for event in pg.event.get():
@@ -73,9 +93,39 @@ while not done:
         elif pg.key.get_pressed()[pg.K_q] != 0:
             done = True
 
-        elif pg.key.get_pressed()[pg.K_w]:
-            snake.move_snake("UP")
+        elif pg.key.get_pressed()[pg.K_w] or pg.key.get_pressed()[pg.K_UP]:
+            try:
+                snake.move_snake("UP")
+            except IndexError:
+                print("You broke the snake!")
+                done = True
 
+        elif pg.key.get_pressed()[pg.K_s] or pg.key.get_pressed()[pg.K_DOWN]:
+            try:
+                snake.move_snake("DOWN")
+            except IndexError:
+                print("You broke the snake!")
+                done = True
+
+        elif pg.key.get_pressed()[pg.K_a] or pg.key.get_pressed()[pg.K_LEFT]:
+            try:
+                snake.move_snake("LEFT")
+            except IndexError:
+                print("You broke the snake!")
+                done = True
+
+        elif pg.key.get_pressed()[pg.K_d] or pg.key.get_pressed()[pg.K_RIGHT]:
+            try:
+                snake.move_snake("RIGHT")
+            except IndexError:
+                print("You broke the snake!")
+                done = True
+
+        # CONTROL STATEMENTS
+
+        elif snake.x_coordinate < 0 or snake.y_coordinate < 0 or snake.x_coordinate > 16 or snake.y_coordinate > 16:
+            print("You broke the snake!")
+            done = True
 
     screen.fill(BLACK)
 
