@@ -28,42 +28,41 @@ class Snake(object):
 
     def __init__(self, x_coordinate, y_coordinate):
         grid[x_coordinate][y_coordinate] = 1
-        Snake.x_coordinate = x_coordinate
-        Snake.y_coordinate = y_coordinate
-        print(Snake.x_coordinate)
-        print(Snake.y_coordinate)
+        self.x_coordinate = x_coordinate
+        self.y_coordinate = y_coordinate
+        print(self.x_coordinate)
+        print(self.y_coordinate)
 
-    @staticmethod
-    def move_snake(direction):
+    def move_snake(self, direction):
         if direction == "UP":
-            old_x = Snake.x_coordinate
-            old_y = Snake.y_coordinate
+            old_x = self.x_coordinate
+            old_y = self.y_coordinate
             grid[old_x][old_y] = 0
             grid[old_x - 1][old_y] = 1
-            Snake.x_coordinate = old_x - 1
+            self.x_coordinate = old_x - 1
             print("UP")
         if direction == "DOWN":
-            old_x = Snake.x_coordinate
-            old_y = Snake.y_coordinate
+            old_x = self.x_coordinate
+            old_y = self.y_coordinate
             grid[old_x][old_y] = 0
             grid[old_x + 1][old_y] = 1
-            Snake.x_coordinate = old_x + 1
+            self.x_coordinate = old_x + 1
             print("DOWN")
         if direction == "LEFT":
-            old_x = Snake.x_coordinate
-            old_y = Snake.y_coordinate
+            old_x = self.x_coordinate
+            old_y = self.y_coordinate
             grid[old_x][old_y] = 0
             grid[old_x][old_y - 1] = 1
-            Snake.y_coordinate = old_y - 1
+            self.y_coordinate = old_y - 1
             print("LEFT")
         if direction == "RIGHT":
-            old_x = Snake.x_coordinate
-            old_y = Snake.y_coordinate
+            old_x = self.x_coordinate
+            old_y = self.y_coordinate
             grid[old_x][old_y] = 0
             grid[old_x][old_y + 1] = 1
-            Snake.y_coordinate = old_y + 1
+            self.y_coordinate = old_y + 1
             print("RIGHT")
-        print("Your X and Y coordinates are {0} and {1}".format(Snake.x_coordinate, Snake.y_coordinate))
+        print("Your X and Y coordinates are {0} and {1}".format(self.x_coordinate, self.y_coordinate))
 
 # Creating the random item object.
 
@@ -73,10 +72,10 @@ class RandomObject(object):
     y_coordinate = 0
 
     def __init__(self):
-        x_coordinate = random.randint(1, 15)
-        y_coordinate = random.randint(1, 15)
-        grid[x_coordinate][y_coordinate] = 2
-        print("The items x and y coordinates are {0} and {1}".format(x_coordinate, y_coordinate))
+        self.x_coordinate = random.randint(1, 15)
+        self.y_coordinate = random.randint(1, 15)
+        grid[self.x_coordinate][self.y_coordinate] = 2
+        print("The items x and y coordinates are {0} and {1}".format(self.x_coordinate, self.y_coordinate))
 
 # Beginning pygame.
 pg.init()
