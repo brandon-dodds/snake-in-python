@@ -75,6 +75,7 @@ class randomObject(object):
         x_coordinate = random.randint(1,15)
         y_coordinate = random.randint(1,15)
         grid[x_coordinate][y_coordinate] = 2
+        print("The items x and y coordinates are {0} and {1}".format(x_coordinate, y_coordinate))
 
 # Beginning pygame.
 pg.init()
@@ -123,6 +124,9 @@ while not done:
         elif snake.x_coordinate < 0 or snake.y_coordinate < 0 or snake.x_coordinate > 16 or snake.y_coordinate > 16:
             print("You broke the snake!")
             done = True
+
+        elif snake.x_coordinate == randomItem.x_coordinate and snake.y_coordinate == randomItem.x_coordinate:
+            print("You got the item.")
 
     screen.fill(BLACK)
 
