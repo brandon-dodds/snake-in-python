@@ -124,9 +124,6 @@ while not done:
             print("You broke the snake!")
             done = True
 
-        elif snake.x_coordinate == randomItem.x_coordinate:
-            print("You got the item.")
-
     screen.fill(BLACK)
 
     # This populates the grid with the white squares. and when a row and a column is equal to one,
