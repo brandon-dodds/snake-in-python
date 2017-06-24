@@ -1,12 +1,11 @@
 import pygame as pg
 import random
-import time
 # Defining colour constants.
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (42, 201, 42)
-RED = (240,34,54)
+RED = (240, 34, 54)
 HEIGHT = 16
 WIDTH = 16
 MARGIN = 3
@@ -64,16 +63,18 @@ class Snake(object):
             grid[old_x][old_y + 1] = 1
             Snake.y_coordinate = old_y + 1
             print("RIGHT")
+        print("Your X and Y coordinates are {0} and {1}".format(Snake.x_coordinate, Snake.y_coordinate))
 
 # Creating the random item object.
 
-class randomObject(object):
+
+class RandomObject(object):
     x_coordinate = 0
     y_coordinate = 0
 
     def __init__(self):
-        x_coordinate = random.randint(1,15)
-        y_coordinate = random.randint(1,15)
+        x_coordinate = random.randint(1, 15)
+        y_coordinate = random.randint(1, 15)
         grid[x_coordinate][y_coordinate] = 2
         print("The items x and y coordinates are {0} and {1}".format(x_coordinate, y_coordinate))
 
@@ -89,7 +90,7 @@ screen = pg.display.set_mode(WINDOW_SIZE)
 pg.display.set_caption("Snake Game")
 
 snake = Snake(1, 1)
-randomItem = randomObject()
+randomItem = RandomObject()
 done = False
 
 clock = pg.time.Clock()
@@ -125,7 +126,7 @@ while not done:
             print("You broke the snake!")
             done = True
 
-        elif snake.x_coordinate == randomItem.x_coordinate and snake.y_coordinate == randomItem.x_coordinate:
+        elif snake.x_coordinate == randomItem.x_coordinate and snake.y_coordinate == randomItem.y_coordinate:
             print("You got the item.")
 
     screen.fill(BLACK)
