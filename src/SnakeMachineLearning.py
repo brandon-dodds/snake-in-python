@@ -1,4 +1,5 @@
 import random
+
 import pygame as pg
 
 # Defining colour constants.
@@ -21,7 +22,7 @@ for row in range(AMOUNT_PER_LINE):
         grid[row].append(0)  # Creates a 2d array which my grid will be based.
 
 
-# Creating the snake object.
+# Creating the snakeList object.
 
 class Snake:
     x_coordinate = 0
@@ -44,7 +45,7 @@ class Snake:
             self.x_coordinate = old_x - 1
             print("UP")
             self.direction = "UP"
-        if direction == "DOWN":
+        elif direction == "DOWN":
             old_x = self.x_coordinate
             old_y = self.y_coordinate
             grid[old_x][old_y] = 0
@@ -52,7 +53,7 @@ class Snake:
             self.x_coordinate = old_x + 1
             print("DOWN")
             self.direction = "DOWN"
-        if direction == "LEFT":
+        elif direction == "LEFT":
             old_x = self.x_coordinate
             old_y = self.y_coordinate
             grid[old_x][old_y] = 0
@@ -60,7 +61,7 @@ class Snake:
             self.y_coordinate = old_y - 1
             print("LEFT")
             self.direction = "LEFT"
-        if direction == "RIGHT":
+        elif direction == "RIGHT":
             old_x = self.x_coordinate
             old_y = self.y_coordinate
             grid[old_x][old_y] = 0
@@ -68,10 +69,6 @@ class Snake:
             self.y_coordinate = old_y + 1
             print("RIGHT")
             self.direction = "RIGHT"
-
-    def new_tail(self):
-        if self.direction == "UP":
-            print("A new snake is being created under.")
 
 
 # Creating the random item object.
@@ -101,15 +98,19 @@ WINDOW_SIZE = [308, 308]
 
 screen = pg.display.set_mode(WINDOW_SIZE)
 
-pg.display.set_caption("Snake Game")
+pg.display.set_caption("snakeList Game")
 
 # Important variables and declaration of objects.
-
+current_snake = 0
 score = 0
-snake = Snake(1, 1)
+snakeList = []
+for count in range(1):
+    x = Snake(8, 8)
+    x.attr = count
+    snakeList.append(x)
+
 randomItem = RandomObject()
 done = False
-
 clock = pg.time.Clock()
 
 while not done:
@@ -119,33 +120,56 @@ while not done:
         if event.type == pg.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
 
-        # USER INPUT.
+        # USER INPUT.s
         elif pg.key.get_pressed()[pg.K_q] != 0:
             done = True
 
         elif pg.key.get_pressed()[pg.K_w] or pg.key.get_pressed()[pg.K_UP]:
-            snake.move_snake("UP")
+            for n in range((len(snakeList))):
+                snakeList[n].move_snake("UP")
 
         elif pg.key.get_pressed()[pg.K_s] or pg.key.get_pressed()[pg.K_DOWN]:
-            snake.move_snake("DOWN")
+            for n in range((len(snakeList))):
+                snakeList[n].move_snake("DOWN")
 
         elif pg.key.get_pressed()[pg.K_a] or pg.key.get_pressed()[pg.K_LEFT]:
-            snake.move_snake("LEFT")
+            for n in range((len(snakeList))):
+                snakeList[n].move_snake("LEFT")
 
         elif pg.key.get_pressed()[pg.K_d] or pg.key.get_pressed()[pg.K_RIGHT]:
-            snake.move_snake("RIGHT")
+            for n in range((len(snakeList))):
+                snakeList[n].move_snake("RIGHT")
 
         # CONTROL STATEMENTS
 
-        elif snake.x_coordinate < 0 or snake.y_coordinate < 0 or snake.x_coordinate > 16 or snake.y_coordinate > 16:
-            print("You broke the snake!")
-            done = True
-
-        elif snake.x_coordinate == randomItem.x_coordinate and snake.y_coordinate == randomItem.y_coordinate:
-            print("You got the item.")
+        elif snakeList[0].x_coordinate == randomItem.x_coordinate and snakeList[
+            0].y_coordinate == randomItem.y_coordinate:
+            print("You got the item!")
             randomItem.new_item()
-            score += 10
-            print(score)
+            if snakeList[0].direction == "UP":
+                x = Snake(snakeList[current_snake].x_coordinate + 1, snakeList[current_snake].y_coordinate)
+                x.attr = count
+                snakeList.append(x)
+                current_snake = current_snake + 1
+
+            if snakeList[0].direction == "DOWN":
+                x = Snake(snakeList[current_snake].x_coordinate - 1, snakeList[current_snake].y_coordinate)
+                x.attr = count
+                snakeList.append(x)
+                current_snake = current_snake + 1
+
+            if snakeList[0].direction == "LEFT":
+                x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate + 1)
+                x.attr = count
+                snakeList.append(x)
+                current_snake = current_snake + 1
+
+            if snakeList[0].direction == "UP":
+                x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate - 1)
+                x.attr = count
+                snakeList.append(x)
+                current_snake = current_snake + 1
+
 
     screen.fill(BLACK)
 
