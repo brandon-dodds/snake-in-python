@@ -1,5 +1,6 @@
-import pygame as pg
 import random
+import pygame as pg
+
 # Defining colour constants.
 
 BLACK = (0, 0, 0)
@@ -22,9 +23,10 @@ for row in range(AMOUNT_PER_LINE):
 
 # Creating the snake object.
 
-class Snake(object):
+class Snake:
     x_coordinate = 0
     y_coordinate = 0
+    direction = "UP"
 
     def __init__(self, x_coordinate, y_coordinate):
         grid[x_coordinate][y_coordinate] = 1
@@ -41,6 +43,7 @@ class Snake(object):
             grid[old_x - 1][old_y] = 1
             self.x_coordinate = old_x - 1
             print("UP")
+            self.direction = "UP"
         if direction == "DOWN":
             old_x = self.x_coordinate
             old_y = self.y_coordinate
@@ -48,6 +51,7 @@ class Snake(object):
             grid[old_x + 1][old_y] = 1
             self.x_coordinate = old_x + 1
             print("DOWN")
+            self.direction = "DOWN"
         if direction == "LEFT":
             old_x = self.x_coordinate
             old_y = self.y_coordinate
@@ -55,6 +59,7 @@ class Snake(object):
             grid[old_x][old_y - 1] = 1
             self.y_coordinate = old_y - 1
             print("LEFT")
+            self.direction = "LEFT"
         if direction == "RIGHT":
             old_x = self.x_coordinate
             old_y = self.y_coordinate
@@ -62,10 +67,14 @@ class Snake(object):
             grid[old_x][old_y + 1] = 1
             self.y_coordinate = old_y + 1
             print("RIGHT")
-        print("Your X and Y coordinates are {0} and {1}".format(self.x_coordinate, self.y_coordinate))
+            self.direction = "RIGHT"
+
+    def new_tail(self):
+        if self.direction == "UP":
+            print("A new snake is being created under.")
+
 
 # Creating the random item object.
-
 
 class RandomObject(object):
     x_coordinate = 0
@@ -75,7 +84,13 @@ class RandomObject(object):
         self.x_coordinate = random.randint(1, 15)
         self.y_coordinate = random.randint(1, 15)
         grid[self.x_coordinate][self.y_coordinate] = 2
-        print("The items x and y coordinates are {0} and {1}".format(self.x_coordinate, self.y_coordinate))
+
+    def new_item(self):
+        grid[self.x_coordinate][self.y_coordinate] = 1
+        self.x_coordinate = random.randint(1, 15)
+        self.y_coordinate = random.randint(1, 15)
+        grid[self.x_coordinate][self.y_coordinate] = 2
+
 
 # Beginning pygame.
 pg.init()
@@ -88,6 +103,9 @@ screen = pg.display.set_mode(WINDOW_SIZE)
 
 pg.display.set_caption("Snake Game")
 
+# Important variables and declaration of objects.
+
+score = 0
 snake = Snake(1, 1)
 randomItem = RandomObject()
 done = False
@@ -100,8 +118,6 @@ while not done:
         # QUITTING THE PROGRAM.
         if event.type == pg.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
-        
-        # SNAKE DIRECTION MOVEMENT
 
         # USER INPUT.
         elif pg.key.get_pressed()[pg.K_q] != 0:
@@ -127,6 +143,9 @@ while not done:
 
         elif snake.x_coordinate == randomItem.x_coordinate and snake.y_coordinate == randomItem.y_coordinate:
             print("You got the item.")
+            randomItem.new_item()
+            score += 10
+            print(score)
 
     screen.fill(BLACK)
 
