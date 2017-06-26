@@ -38,35 +38,30 @@ class Snake:
 
     def move_snake(self, direction):
         if direction == "UP":
-            old_x = self.x_coordinate
-            old_y = self.y_coordinate
-            grid[old_x][old_y] = 0
-            grid[old_x - 1][old_y] = 1
-            self.x_coordinate = old_x - 1
+            grid[self.x_coordinate][self.y_coordinate] = 0
+            grid[self.x_coordinate - 1][self.y_coordinate] = 1
+            self.x_coordinate = self.x_coordinate - 1
             print("UP")
             self.direction = "UP"
+
         elif direction == "DOWN":
-            old_x = self.x_coordinate
-            old_y = self.y_coordinate
-            grid[old_x][old_y] = 0
-            grid[old_x + 1][old_y] = 1
-            self.x_coordinate = old_x + 1
+            grid[self.x_coordinate][self.y_coordinate] = 0
+            grid[self.x_coordinate + 1][self.y_coordinate] = 1
+            self.x_coordinate = self.x_coordinate + 1
             print("DOWN")
             self.direction = "DOWN"
+
         elif direction == "LEFT":
-            old_x = self.x_coordinate
-            old_y = self.y_coordinate
-            grid[old_x][old_y] = 0
-            grid[old_x][old_y - 1] = 1
-            self.y_coordinate = old_y - 1
+            grid[self.x_coordinate][self.y_coordinate] = 0
+            grid[self.x_coordinate][self.y_coordinate - 1] = 1
+            self.y_coordinate = self.y_coordinate - 1
             print("LEFT")
             self.direction = "LEFT"
+
         elif direction == "RIGHT":
-            old_x = self.x_coordinate
-            old_y = self.y_coordinate
-            grid[old_x][old_y] = 0
-            grid[old_x][old_y + 1] = 1
-            self.y_coordinate = old_y + 1
+            grid[self.x_coordinate][self.y_coordinate] = 0
+            grid[self.x_coordinate][self.y_coordinate + 1] = 1
+            self.y_coordinate = self.y_coordinate + 1
             print("RIGHT")
             self.direction = "RIGHT"
 
@@ -78,14 +73,17 @@ class RandomObject(object):
     y_coordinate = 0
 
     def __init__(self):
-        self.x_coordinate = random.randint(1, 15)
-        self.y_coordinate = random.randint(1, 15)
+        self.x_coordinate = random.randint(1, 16)
+        self.y_coordinate = random.randint(1, 16)
         grid[self.x_coordinate][self.y_coordinate] = 2
 
     def new_item(self):
         grid[self.x_coordinate][self.y_coordinate] = 1
-        self.x_coordinate = random.randint(1, 15)
-        self.y_coordinate = random.randint(1, 15)
+        self.x_coordinate = random.randint(0, 16)
+        self.y_coordinate = random.randint(0, 16)
+        for n in range(len(snakeList)):
+            if self.x_coordinate and self.y_coordinate == snakeList[n].x_coordinate and snakeList[n].y_coordinate:
+                self.new_item()
         grid[self.x_coordinate][self.y_coordinate] = 2
 
 
@@ -125,7 +123,7 @@ while not done:
             done = True
 
         elif pg.key.get_pressed()[pg.K_w] or pg.key.get_pressed()[pg.K_UP]:
-            for n in range((len(snakeList))):
+            for n in range(len(snakeList)):
                 snakeList[n].move_snake("UP")
 
         elif pg.key.get_pressed()[pg.K_s] or pg.key.get_pressed()[pg.K_DOWN]:
@@ -146,25 +144,26 @@ while not done:
             0].y_coordinate == randomItem.y_coordinate:
             print("You got the item!")
             randomItem.new_item()
+
             if snakeList[0].direction == "UP":
                 x = Snake(snakeList[current_snake].x_coordinate + 1, snakeList[current_snake].y_coordinate)
                 x.attr = count
                 snakeList.append(x)
                 current_snake = current_snake + 1
 
-            if snakeList[0].direction == "DOWN":
+            elif snakeList[0].direction == "DOWN":
                 x = Snake(snakeList[current_snake].x_coordinate - 1, snakeList[current_snake].y_coordinate)
                 x.attr = count
                 snakeList.append(x)
                 current_snake = current_snake + 1
 
-            if snakeList[0].direction == "LEFT":
+            elif snakeList[0].direction == "LEFT":
                 x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate + 1)
                 x.attr = count
                 snakeList.append(x)
                 current_snake = current_snake + 1
 
-            if snakeList[0].direction == "UP":
+            elif snakeList[0].direction == "UP":
                 x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate - 1)
                 x.attr = count
                 snakeList.append(x)
