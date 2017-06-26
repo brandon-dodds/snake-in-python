@@ -79,8 +79,8 @@ class RandomObject(object):
 
     def new_item(self):
         grid[self.x_coordinate][self.y_coordinate] = 1
-        self.x_coordinate = random.randint(0, 16)
-        self.y_coordinate = random.randint(0, 16)
+        self.x_coordinate = random.randint(1, 16)
+        self.y_coordinate = random.randint(1, 16)
         for n in range(len(snakeList)):
             if self.x_coordinate and self.y_coordinate == snakeList[n].x_coordinate and snakeList[n].y_coordinate:
                 self.new_item()
@@ -123,19 +123,19 @@ while not done:
             done = True
 
         elif pg.key.get_pressed()[pg.K_w] or pg.key.get_pressed()[pg.K_UP]:
-            for n in range(len(snakeList)):
+            for n in reversed(range(len(snakeList))):
                 snakeList[n].move_snake("UP")
 
         elif pg.key.get_pressed()[pg.K_s] or pg.key.get_pressed()[pg.K_DOWN]:
-            for n in range((len(snakeList))):
+            for n in reversed(range((len(snakeList)))):
                 snakeList[n].move_snake("DOWN")
 
         elif pg.key.get_pressed()[pg.K_a] or pg.key.get_pressed()[pg.K_LEFT]:
-            for n in range((len(snakeList))):
+            for n in reversed(range((len(snakeList)))):
                 snakeList[n].move_snake("LEFT")
 
         elif pg.key.get_pressed()[pg.K_d] or pg.key.get_pressed()[pg.K_RIGHT]:
-            for n in range((len(snakeList))):
+            for n in reversed(range((len(snakeList)))):
                 snakeList[n].move_snake("RIGHT")
 
         # CONTROL STATEMENTS
@@ -163,7 +163,7 @@ while not done:
                 snakeList.append(x)
                 current_snake = current_snake + 1
 
-            elif snakeList[0].direction == "UP":
+            elif snakeList[0].direction == "RIGHT":
                 x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate - 1)
                 x.attr = count
                 snakeList.append(x)
