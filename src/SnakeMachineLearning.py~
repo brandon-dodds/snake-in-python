@@ -41,7 +41,7 @@ class Snake:
 
     def make_green(self, direction):
         
-        elif direction == "UP":
+        if direction == "UP":
             grid[self.x_coordinate - 1][self.y_coordinate] = 1
             self.x_coordinate = self.x_coordinate - 1
             print("UP")
