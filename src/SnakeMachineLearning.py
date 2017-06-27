@@ -73,8 +73,8 @@ class RandomObject(object):
     y_coordinate = 0
 
     def __init__(self):
-        self.x_coordinate = random.randint(1, 16)
-        self.y_coordinate = random.randint(1, 16)
+        self.x_coordinate = random.randint(1, 15)
+        self.y_coordinate = random.randint(1, 15)
         grid[self.x_coordinate][self.y_coordinate] = 2
 
     def new_item(self):

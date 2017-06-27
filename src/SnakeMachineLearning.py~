@@ -79,8 +79,8 @@ class RandomObject(object):
 
     def new_item(self):
         grid[self.x_coordinate][self.y_coordinate] = 1
-        self.x_coordinate = random.randint(1, 16)
-        self.y_coordinate = random.randint(1, 16)
+        self.x_coordinate = random.randint(1, 15)
+        self.y_coordinate = random.randint(1, 15)
         for n in range(len(snakeList)):
             if self.x_coordinate and self.y_coordinate == snakeList[n].x_coordinate and snakeList[n].y_coordinate:
                 self.new_item()
