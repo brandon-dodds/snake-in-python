@@ -24,7 +24,7 @@ sudo pip install sklearn pygame
 
 * **Brandon - Lee Dodds** - *Creator of the project.* - [subpanda101](https://github.com/subpanda101)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/subpanda101/SnakeMachineLearning/graphs/contributors) who participated in this project.
 
 ## License
 
