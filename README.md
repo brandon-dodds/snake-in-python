@@ -11,8 +11,13 @@ In order to get started git clone this project in a directory. You will need to 
 In order to get the game running you will need to install these python packages.
 
 ```
-pytorch
+sklearn
 pygame
+```
+This can be installed with the following command.
+
+```
+sudo pip install sklearn pygame
 ```
 
 ## Authors
