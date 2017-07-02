@@ -33,8 +33,6 @@ class Snake:
         grid[x_coordinate][y_coordinate] = 1
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
-        print(self.x_coordinate)
-        print(self.y_coordinate)
 
     def make_white(self):
             grid[self.x_coordinate][self.y_coordinate] = 0
@@ -65,8 +63,8 @@ class Snake:
             print("RIGHT")
             self.direction = "RIGHT"
 
-
 # Creating the random item object.
+
 
 class RandomObject(object):
     x_coordinate = 0
@@ -78,12 +76,12 @@ class RandomObject(object):
         grid[self.x_coordinate][self.y_coordinate] = 2
 
     def new_item(self):
-        grid[self.x_coordinate][self.y_coordinate] = 1
         self.x_coordinate = random.randint(1, 15)
         self.y_coordinate = random.randint(1, 15)
-        for n in range(len(snakeList)):
-            if self.x_coordinate and self.y_coordinate == snakeList[n].x_coordinate and snakeList[n].y_coordinate:
+        for X in range(len(snakeList)):
+            if self.x_coordinate and self.y_coordinate == snakeList[X].x_coordinate and snakeList[X].y_coordinate:
                 self.new_item()
+
         grid[self.x_coordinate][self.y_coordinate] = 2
 
 
@@ -99,14 +97,12 @@ screen = pg.display.set_mode(WINDOW_SIZE)
 pg.display.set_caption("Snake Game")
 
 # Important variables and declaration of objects.
+
 current_snake = 0
 score = 0
 snakeList = []
-for count in range(1):
-    x = Snake(8, 8)
-    x.attr = count
-    snakeList.append(x)
-
+x = Snake(8, 8)
+snakeList.append(x)
 randomItem = RandomObject()
 done = False
 clock = pg.time.Clock()
@@ -118,33 +114,33 @@ while not done:
         if event.type == pg.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
 
-        # USER INPUT.s
+        # USER INPUT
         elif pg.key.get_pressed()[pg.K_q] != 0:
             done = True
 
         elif pg.key.get_pressed()[pg.K_w] or pg.key.get_pressed()[pg.K_UP]:
-            for n in range(len(snakeList)):
-                snakeList[n].make_white()
-            for n in range(len(snakeList)):
-                snakeList[n].make_green("UP")
+            for x in range(len(snakeList)):
+                snakeList[x].make_white()
+            for x in range(len(snakeList)):
+                snakeList[x].make_green("UP")
 
         elif pg.key.get_pressed()[pg.K_s] or pg.key.get_pressed()[pg.K_DOWN]:
-            for n in range(len(snakeList)):
-                snakeList[n].make_white()
-            for n in range(len(snakeList)):
-                snakeList[n].make_green("DOWN")
+            for x in range(len(snakeList)):
+                snakeList[x].make_white()
+            for x in range(len(snakeList)):
+                snakeList[x].make_green("DOWN")
 
         elif pg.key.get_pressed()[pg.K_a] or pg.key.get_pressed()[pg.K_LEFT]:
-            for n in range(len(snakeList)):
-                snakeList[n].make_white()
-            for n in range(len(snakeList)):
-                snakeList[n].make_green("LEFT")
+            for x in range(len(snakeList)):
+                snakeList[x].make_white()
+            for x in range(len(snakeList)):
+                snakeList[x].make_green("LEFT")
 
         elif pg.key.get_pressed()[pg.K_d] or pg.key.get_pressed()[pg.K_RIGHT]:
-            for n in range(len(snakeList)):
-                snakeList[n].make_white()
-            for n in range(len(snakeList)):
-                snakeList[n].make_green("RIGHT")
+            for x in range(len(snakeList)):
+                snakeList[x].make_white()
+            for x in range(len(snakeList)):
+                snakeList[x].make_green("RIGHT")
 
         # CONTROL STATEMENTS
 
@@ -155,28 +151,18 @@ while not done:
 
             if snakeList[0].direction == "UP":
                 x = Snake(snakeList[current_snake].x_coordinate + 1, snakeList[current_snake].y_coordinate)
-                x.attr = count
-                snakeList.append(x)
-                current_snake = current_snake + 1
 
             elif snakeList[0].direction == "DOWN":
                 x = Snake(snakeList[current_snake].x_coordinate - 1, snakeList[current_snake].y_coordinate)
-                x.attr = count
-                snakeList.append(x)
-                current_snake = current_snake + 1
 
             elif snakeList[0].direction == "LEFT":
                 x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate + 1)
-                x.attr = count
-                snakeList.append(x)
-                current_snake = current_snake + 1
 
             elif snakeList[0].direction == "RIGHT":
                 x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate - 1)
-                x.attr = count
-                snakeList.append(x)
-                current_snake = current_snake + 1
 
+            snakeList.append(x)
+            current_snake = current_snake + 1
 
     screen.fill(BLACK)
 
