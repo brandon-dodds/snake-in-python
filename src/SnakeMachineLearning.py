@@ -85,6 +85,20 @@ class RandomObject(object):
         grid[self.x_coordinate][self.y_coordinate] = 2
 
 
+# Defining the new move function
+
+# TODO implement my buffer design.
+
+
+def move(direction):
+    previous_direction = snakeList[0].direction
+    snakeList[0].make_white()
+    snakeList[0].make_green(direction)
+    for m in range(1, len(snakeList)):
+        snakeList[m].make_white()
+        snakeList[m].make_green(previous_direction)
+
+
 # Beginning pygame.
 pg.init()
 
@@ -97,7 +111,6 @@ screen = pg.display.set_mode(WINDOW_SIZE)
 pg.display.set_caption("Snake Game")
 
 # Important variables and declaration of objects.
-
 current_snake = 0
 score = 0
 snakeList = []
@@ -119,28 +132,16 @@ while not done:
             done = True
 
         elif pg.key.get_pressed()[pg.K_w] or pg.key.get_pressed()[pg.K_UP]:
-            for x in range(len(snakeList)):
-                snakeList[x].make_white()
-            for x in range(len(snakeList)):
-                snakeList[x].make_green("UP")
+            move("UP")
 
         elif pg.key.get_pressed()[pg.K_s] or pg.key.get_pressed()[pg.K_DOWN]:
-            for x in range(len(snakeList)):
-                snakeList[x].make_white()
-            for x in range(len(snakeList)):
-                snakeList[x].make_green("DOWN")
+            move("DOWN")
 
         elif pg.key.get_pressed()[pg.K_a] or pg.key.get_pressed()[pg.K_LEFT]:
-            for x in range(len(snakeList)):
-                snakeList[x].make_white()
-            for x in range(len(snakeList)):
-                snakeList[x].make_green("LEFT")
+            move("LEFT")
 
         elif pg.key.get_pressed()[pg.K_d] or pg.key.get_pressed()[pg.K_RIGHT]:
-            for x in range(len(snakeList)):
-                snakeList[x].make_white()
-            for x in range(len(snakeList)):
-                snakeList[x].make_green("RIGHT")
+            move("RIGHT")
 
         # CONTROL STATEMENTS
 
