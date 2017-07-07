@@ -1,7 +1,6 @@
 import random
-
 import pygame as pg
-
+from collections import deque
 # Defining colour constants.
 
 BLACK = (0, 0, 0)
@@ -87,15 +86,14 @@ class RandomObject(object):
 
 # TODO implement my buffer design.
 
-
+movementList = []
 def move(direction):
     snakeList[0].make_white()
     snakeList[0].make_green(direction)
+    movementList.append(direction)
     for x in range(1, len(snakeList)):
         snakeList[x].make_white()
-        snakeList[x].make_green(snakeList[x - 1].previous_direction)
-    for x in range(len(snakeList)):
-        snakeList[x].previous_direction = snakeList[x].direction
+        snakeList[x].make_green(movementList[x])
 
 
 
