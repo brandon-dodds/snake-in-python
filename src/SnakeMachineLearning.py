@@ -28,6 +28,7 @@ class Snake:
     x_coordinate = 0
     y_coordinate = 0
     direction = "UP"
+    previous_direction = 0
 
     def __init__(self, x_coordinate, y_coordinate):
         grid[x_coordinate][y_coordinate] = 1
@@ -35,33 +36,30 @@ class Snake:
         self.y_coordinate = y_coordinate
 
     def make_white(self):
-            grid[self.x_coordinate][self.y_coordinate] = 0
+        grid[self.x_coordinate][self.y_coordinate] = 0
 
     def make_green(self, direction):
-        
+
         if direction == "UP":
             grid[self.x_coordinate - 1][self.y_coordinate] = 1
             self.x_coordinate = self.x_coordinate - 1
-            print("UP")
             self.direction = "UP"
 
         elif direction == "DOWN":
             grid[self.x_coordinate + 1][self.y_coordinate] = 1
             self.x_coordinate = self.x_coordinate + 1
-            print("DOWN")
             self.direction = "DOWN"
 
         elif direction == "LEFT":
             grid[self.x_coordinate][self.y_coordinate - 1] = 1
             self.y_coordinate = self.y_coordinate - 1
-            print("LEFT")
             self.direction = "LEFT"
 
         elif direction == "RIGHT":
             grid[self.x_coordinate][self.y_coordinate + 1] = 1
             self.y_coordinate = self.y_coordinate + 1
-            print("RIGHT")
             self.direction = "RIGHT"
+
 
 # Creating the random item object.
 
@@ -91,12 +89,15 @@ class RandomObject(object):
 
 
 def move(direction):
-    previous_direction = snakeList[0].direction
     snakeList[0].make_white()
     snakeList[0].make_green(direction)
-    for m in range(1, len(snakeList)):
-        snakeList[m].make_white()
-        snakeList[m].make_green(previous_direction)
+    for x in range(1, len(snakeList)):
+        snakeList[x].make_white()
+        snakeList[x].make_green(snakeList[x - 1].previous_direction)
+    for x in range(len(snakeList)):
+        snakeList[x].previous_direction = snakeList[x].direction
+
+
 
 
 # Beginning pygame.
@@ -145,8 +146,8 @@ while not done:
 
         # CONTROL STATEMENTS
 
-        elif snakeList[0].x_coordinate == randomItem.x_coordinate and snakeList[
-            0].y_coordinate == randomItem.y_coordinate:
+        elif snakeList[0].x_coordinate == randomItem.x_coordinate and \
+                snakeList[0].y_coordinate == randomItem.y_coordinate:
             print("You got the item!")
             randomItem.new_item()
 
