@@ -1,6 +1,6 @@
+from collections import deque
 import random
 import pygame as pg
-from collections import deque
 # Defining colour constants.
 
 BLACK = (0, 0, 0)
@@ -14,8 +14,8 @@ AMOUNT_PER_LINE = 16
 
 # Creating the grid that will be populated.
 
-grid = []
-for row in range(AMOUNT_PER_LINE):
+grid = [] # This is the grid 2d array.
+for row in range(AMOUNT_PER_LINE): # You can change these values for bigger map size.
     grid.append([])
     for column in range(AMOUNT_PER_LINE):
         grid[row].append(0)  # Creates a 2d array which my grid will be based.
@@ -24,14 +24,13 @@ for row in range(AMOUNT_PER_LINE):
 # Creating the snakeList object.
 
 class Snake:
-    x_coordinate = 0
+    x_coordinate = 0 # These are the X and Y coordinates stored for each snake.
     y_coordinate = 0
-    direction = "UP"
-    previous_direction = 0
+    direction = "UP" # This is the direction the snake is going.
 
-    def __init__(self, x_coordinate, y_coordinate):
-        grid[x_coordinate][y_coordinate] = 1
-        self.x_coordinate = x_coordinate
+    def __init__(self, x_coordinate, y_coordinate): # This is executed when a snake is created.
+        grid[x_coordinate][y_coordinate] = 1 # The place where it is created is '1' means that the block is green.
+        self.x_coordinate = x_coordinate # The X and Y coordinates become the new X and Y coordinates.
         self.y_coordinate = y_coordinate
 
     def make_white(self):
@@ -86,12 +85,10 @@ class RandomObject(object):
 
 # TODO implement my buffer design.
 
-movementList = []
+movementList = deque([])
 def move(direction):
-    snakeList[0].make_white()
-    snakeList[0].make_green(direction)
-    movementList.append(direction)
-    for x in range(1, len(snakeList)):
+    movementList.appendleft(direction)
+    for x in range(len(snakeList)):
         snakeList[x].make_white()
         snakeList[x].make_green(movementList[x])
 
