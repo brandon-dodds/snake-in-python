@@ -74,8 +74,8 @@ class RandomObject(object):
     def new_item(self):
         self.x_coordinate = random.randint(1, 15)
         self.y_coordinate = random.randint(1, 15)
-        for X in range(len(snakeList)):
-            if self.x_coordinate and self.y_coordinate == snakeList[X].x_coordinate and snakeList[X].y_coordinate:
+        for x in range(len(snakeList)):
+            if self.x_coordinate and self.y_coordinate == snakeList[x].x_coordinate and snakeList[x].y_coordinate:
                 self.new_item()
 
         grid[self.x_coordinate][self.y_coordinate] = 2
@@ -90,9 +90,8 @@ def move(direction):
     movementList.appendleft(direction)
     for x in range(len(snakeList)):
         snakeList[x].make_white()
+    for x in range(len(snakeList)):
         snakeList[x].make_green(movementList[x])
-
-
 
 
 # Beginning pygame.
@@ -141,25 +140,27 @@ while not done:
 
         # CONTROL STATEMENTS
 
-        elif snakeList[0].x_coordinate == randomItem.x_coordinate and \
+        if snakeList[0].x_coordinate == randomItem.x_coordinate and \
                 snakeList[0].y_coordinate == randomItem.y_coordinate:
             print("You got the item!")
+            score += 10
+            print(score)
             randomItem.new_item()
 
-            if snakeList[0].direction == "UP":
+            if snakeList[current_snake].direction == "UP":
                 x = Snake(snakeList[current_snake].x_coordinate + 1, snakeList[current_snake].y_coordinate)
 
-            elif snakeList[0].direction == "DOWN":
+            elif snakeList[current_snake].direction == "DOWN":
                 x = Snake(snakeList[current_snake].x_coordinate - 1, snakeList[current_snake].y_coordinate)
 
-            elif snakeList[0].direction == "LEFT":
+            elif snakeList[current_snake].direction == "LEFT":
                 x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate + 1)
 
-            elif snakeList[0].direction == "RIGHT":
+            elif snakeList[current_snake].direction == "RIGHT":
                 x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate - 1)
 
             snakeList.append(x)
-            current_snake = current_snake + 1
+            current_snake += 1
 
     screen.fill(BLACK)
 
