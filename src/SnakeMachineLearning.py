@@ -1,6 +1,7 @@
 from collections import deque
 import random
 import pygame as pg
+import time
 # Defining colour constants.
 
 BLACK = (0, 0, 0)
@@ -19,7 +20,6 @@ for row in range(AMOUNT_PER_LINE): # You can change these values for bigger map 
     grid.append([])
     for column in range(AMOUNT_PER_LINE):
         grid[row].append(0)  # Creates a 2d array which my grid will be based.
-
 
 # Creating the snakeList object.
 
@@ -58,9 +58,7 @@ class Snake:
             self.y_coordinate = self.y_coordinate + 1
             self.direction = "RIGHT"
 
-
 # Creating the random item object.
-
 
 class RandomObject(object):
     x_coordinate = 0
@@ -75,24 +73,21 @@ class RandomObject(object):
         self.x_coordinate = random.randint(1, 15)
         self.y_coordinate = random.randint(1, 15)
         for x in range(len(snakeList)):
-            if self.x_coordinate and self.y_coordinate == snakeList[x].x_coordinate and snakeList[x].y_coordinate:
+            if self.x_coordinate == snakeList[x].x_coordinate and self.y_coordinate == snakeList[x].y_coordinate:
                 self.new_item()
 
         grid[self.x_coordinate][self.y_coordinate] = 2
 
-
 # Defining the new move function
 
-# TODO implement my buffer design.
-
 movementList = deque([])
+
 def move(direction):
     movementList.appendleft(direction)
     for x in range(len(snakeList)):
         snakeList[x].make_white()
     for x in range(len(snakeList)):
         snakeList[x].make_green(movementList[x])
-
 
 # Beginning pygame.
 pg.init()
@@ -106,6 +101,7 @@ screen = pg.display.set_mode(WINDOW_SIZE)
 pg.display.set_caption("Snake Game")
 
 # Important variables and declaration of objects.
+
 current_snake = 0
 score = 0
 snakeList = []
@@ -126,26 +122,41 @@ while not done:
         elif pg.key.get_pressed()[pg.K_q] != 0:
             done = True
 
-        elif pg.key.get_pressed()[pg.K_w] or pg.key.get_pressed()[pg.K_UP]:
-            move("UP")
+        try:
+            if pg.key.get_pressed()[pg.K_w] or pg.key.get_pressed()[pg.K_UP]:
+                move("UP")
+                time.sleep(0.01667)
 
-        elif pg.key.get_pressed()[pg.K_s] or pg.key.get_pressed()[pg.K_DOWN]:
-            move("DOWN")
+            elif pg.key.get_pressed()[pg.K_s] or pg.key.get_pressed()[pg.K_DOWN]:
+                move("DOWN")
+                time.sleep(0.01667)
 
-        elif pg.key.get_pressed()[pg.K_a] or pg.key.get_pressed()[pg.K_LEFT]:
-            move("LEFT")
+            elif pg.key.get_pressed()[pg.K_a] or pg.key.get_pressed()[pg.K_LEFT]:
+                move("LEFT")
+                time.sleep(0.01667)
 
-        elif pg.key.get_pressed()[pg.K_d] or pg.key.get_pressed()[pg.K_RIGHT]:
-            move("RIGHT")
+            elif pg.key.get_pressed()[pg.K_d] or pg.key.get_pressed()[pg.K_RIGHT]:
+                move("RIGHT")
+                time.sleep(0.01667)
+
+        except IndexError:
+            done = True
 
         # CONTROL STATEMENTS
+
+        for x in range(len(snakeList)):
+            if snakeList[x].x_coordinate > 15 or snakeList[x].x_coordinate < 0:
+                print("You are out of range!")
+                done = True
+            elif snakeList[x].y_coordinate > 15 or snakeList[x].y_coordinate < 0:
+                print("You are out of range!")
+                done = True
 
         if snakeList[0].x_coordinate == randomItem.x_coordinate and \
                 snakeList[0].y_coordinate == randomItem.y_coordinate:
             print("You got the item!")
             score += 10
             print(score)
-            randomItem.new_item()
 
             if snakeList[current_snake].direction == "UP":
                 x = Snake(snakeList[current_snake].x_coordinate + 1, snakeList[current_snake].y_coordinate)
@@ -161,7 +172,11 @@ while not done:
 
             snakeList.append(x)
             current_snake += 1
-
+            randomItem.new_item()
+            
+        if score == 2560:
+            print("You won the game!")
+            done = True
     screen.fill(BLACK)
 
     # This populates the grid with the white squares. and when a row and a column is equal to one,
