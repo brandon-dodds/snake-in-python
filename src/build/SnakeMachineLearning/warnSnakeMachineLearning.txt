@@ -1,39 +1,42 @@
-missing module named 'win32com.gen_py' - imported by win32com, c:\users\brandon\appdata\local\programs\python\python36-32\lib\site-packages\PyInstaller\loader\rthooks\pyi_rth_win32comgenpy.py
-missing module named pyimod03_importers - imported by c:\users\brandon\appdata\local\programs\python\python36-32\lib\site-packages\PyInstaller\loader\rthooks\pyi_rth_pkgres.py
+missing module named pyimod03_importers - imported by /usr/local/lib/python3.5/dist-packages/PyInstaller/loader/rthooks/pyi_rth_pkgres.py
 missing module named 'pkg_resources.extern.pyparsing' - imported by pkg_resources._vendor.packaging.requirements, pkg_resources._vendor.packaging.markers
-missing module named 'com.sun' - imported by pkg_resources._vendor.appdirs
-missing module named com - imported by pkg_resources._vendor.appdirs
-missing module named StringIO - imported by pkg_resources._vendor.six
+missing module named 'ctypes.macholib' - imported by ctypes.util
+missing module named netbios - imported by uuid
+missing module named win32wnet - imported by uuid
 missing module named __builtin__ - imported by pkg_resources._vendor.pyparsing
 missing module named ordereddict - imported by pkg_resources._vendor.pyparsing
+missing module named StringIO - imported by pkg_resources._vendor.six
+missing module named 'com.sun' - imported by pkg_resources._vendor.appdirs
+missing module named com - imported by pkg_resources._vendor.appdirs
+missing module named win32api - imported by pkg_resources._vendor.appdirs
+missing module named win32com.shell - imported by pkg_resources._vendor.appdirs
 missing module named __main__ - imported by pkg_resources
-missing module named multiprocessing.set_start_method - imported by multiprocessing, multiprocessing.spawn
 missing module named multiprocessing.get_start_method - imported by multiprocessing, multiprocessing.spawn
-missing module named multiprocessing.get_context - imported by multiprocessing, multiprocessing.pool, multiprocessing.managers, multiprocessing.sharedctypes
+missing module named multiprocessing.set_start_method - imported by multiprocessing, multiprocessing.spawn
 missing module named multiprocessing.TimeoutError - imported by multiprocessing, multiprocessing.pool
+missing module named multiprocessing.get_context - imported by multiprocessing, multiprocessing.pool, multiprocessing.managers, multiprocessing.sharedctypes
 missing module named multiprocessing.AuthenticationError - imported by multiprocessing, multiprocessing.connection
 missing module named multiprocessing.BufferTooShort - imported by multiprocessing, multiprocessing.connection
+missing module named _sysconfigdata_dm - imported by _sysconfigdata
 missing module named pkg_resources.extern.packaging - imported by pkg_resources.extern, pkg_resources
 missing module named pkg_resources.extern.appdirs - imported by pkg_resources.extern, pkg_resources
 missing module named 'pkg_resources.extern.six.moves' - imported by pkg_resources, pkg_resources._vendor.packaging.requirements
 missing module named pkg_resources.extern.six - imported by pkg_resources.extern, pkg_resources
-missing module named resource - imported by posix, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named posix - imported by os, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named _posixsubprocess - imported by subprocess, multiprocessing.util, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named org - imported by pickle, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named readline - imported by cmd, code, pdb, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-excluded module named _frozen_importlib - imported by importlib, importlib.abc, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named _winreg - imported by platform, pygame, pygame.sysfont, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py, pkg_resources._vendor.appdirs
+missing module named 'org.python' - imported by pickle, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py, xml.sax
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py
+missing module named _winreg - imported by platform, pygame, pygame.sysfont, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py, pkg_resources._vendor.appdirs
 missing module named _scproxy - imported by urllib.request
-missing module named java - imported by platform, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named 'java.lang' - imported by platform, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py, xml.sax._exceptions
-missing module named vms_lib - imported by platform, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named termios - imported by tty, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py, getpass
-missing module named grp - imported by shutil, tarfile, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named pwd - imported by posixpath, shutil, tarfile, http.server, webbrowser, distutils.util, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py, netrc, getpass
-missing module named _dummy_threading - imported by dummy_threading, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py
-missing module named 'org.python' - imported by copy, C:\Users\Brandon\PycharmProjects\SnakeMachineLearning\src\SnakeMachineLearning.py, xml.sax
+missing module named java - imported by platform, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py
+missing module named 'java.lang' - imported by platform, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py
+missing module named winreg - imported by platform, mimetypes, pygame.sysfont, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py, urllib.request
+missing module named nt - imported by os, ntpath, shutil, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py
+missing module named ce - imported by os, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py
+missing module named msvcrt - imported by subprocess, multiprocessing.spawn, multiprocessing.popen_spawn_win32, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py, getpass
+missing module named _winapi - imported by subprocess, multiprocessing.reduction, multiprocessing.connection, multiprocessing.heap, multiprocessing.popen_spawn_win32, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py
+missing module named _dummy_threading - imported by dummy_threading, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py
+missing module named org - imported by copy, /home/brandon/SnakeMachineLearning/src/SnakeMachineLearning.py
 missing module named copy_reg - imported by cStringIO, pygame
 missing module named 'pygame._view' - imported by pygame
 missing module named MacOS - imported by pygame.macosx

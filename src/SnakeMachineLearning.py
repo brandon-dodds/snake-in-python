@@ -13,6 +13,7 @@ WIDTH = 16
 MARGIN = 3
 AMOUNT_PER_LINE = 16
 
+
 # Creating the grid that will be populated.
 
 grid = [] # This is the grid 2d array.
@@ -108,6 +109,7 @@ snakeList = []
 x = Snake(8, 8)
 snakeList.append(x)
 randomItem = RandomObject()
+
 done = False
 clock = pg.time.Clock()
 
@@ -139,15 +141,22 @@ while not done:
                 move("RIGHT")
                 time.sleep(0.01667)
 
+
         except IndexError:
             done = True
 
         # CONTROL STATEMENTS
 
+        for x in range(1, len(snakeList)):
+            if snakeList[0].x_coordinate == snakeList[x].x_coordinate and snakeList[0].y_coordinate == snakeList[x].y_coordinate:
+                print("You have hit yourself!")
+                done = True
+
         for x in range(len(snakeList)):
             if snakeList[x].x_coordinate > 15 or snakeList[x].x_coordinate < 0:
                 print("You are out of range!")
                 done = True
+
             elif snakeList[x].y_coordinate > 15 or snakeList[x].y_coordinate < 0:
                 print("You are out of range!")
                 done = True
@@ -177,6 +186,7 @@ while not done:
         if score == 2560:
             print("You won the game!")
             done = True
+
     screen.fill(BLACK)
 
     # This populates the grid with the white squares. and when a row and a column is equal to one,

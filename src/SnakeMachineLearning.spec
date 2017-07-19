@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['SnakeMachineLearning.py'],
-             pathex=['C:\\Users\\Brandon\\PycharmProjects\\SnakeMachineLearning\\src'],
+             pathex=['/home/brandon/SnakeMachineLearning/src'],
              binaries=[],
              datas=[],
              hiddenimports=[],
