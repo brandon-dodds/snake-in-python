@@ -8,6 +8,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (42, 201, 42)
 RED = (240, 34, 54)
+PURPLE = (170, 94, 181)
 HEIGHT = 16
 WIDTH = 16
 MARGIN = 3
@@ -35,7 +36,7 @@ class Snake:
         self.y_coordinate = y_coordinate
 
     def make_white(self):
-        grid[self.x_coordinate][self.y_coordinate] = 0
+        grid[self.x_coordinate][self.y_coordinate] = 0 #This makes the grid space white.
 
     def make_green(self, direction):
 
@@ -70,7 +71,7 @@ class RandomObject(object):
         self.y_coordinate = random.randint(1, 15)
         if snakeList[0].x_coordinate == self.x_coordinate and snakeList[0].y_coordinate == self.y_coordinate:
             self.__init__()
-            
+
         grid[self.x_coordinate][self.y_coordinate] = 2
 
     def new_item(self):
@@ -150,6 +151,8 @@ while not done:
 
         # CONTROL STATEMENTS
 
+        grid[snakeList[0].x_coordinate][snakeList[0].y_coordinate] = 3
+
         for x in range(1, len(snakeList)):
             if snakeList[0].x_coordinate == snakeList[x].x_coordinate and snakeList[0].y_coordinate == snakeList[x].y_coordinate:
                 print("You have hit yourself!")
@@ -204,6 +207,8 @@ while not done:
                 color = GREEN
             elif grid[row][column] == 2:
                 color = RED
+            elif grid[row][column] == 3:
+                color = PURPLE
             pg.draw.rect(screen,
                          color,
                          [(MARGIN + WIDTH) * column + MARGIN,
