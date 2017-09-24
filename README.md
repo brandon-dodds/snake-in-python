@@ -25,7 +25,7 @@ pygame
 This can be installed with the following command.
 
 ```
-sudo pip3 install sklearn pygame
+sudo pip3 install pygame
 ```
 
 ## Authors
