@@ -1,5 +1,4 @@
 import pygame as pg
-import time
 
 import Colours
 from src.GridLogic import GridLogic
