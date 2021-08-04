@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e532d0eb-5942-400e-a6a3-010898e7d46d" name="Changes" comment="Added&#10;- Direction enum&#10;- Grid logic in its own class (GridLogic.py)&#10;- Random object in its own class (RandomObject.py)&#10;- Snake in its own class (Snake.py)&#10;- Direction enum (Direction.py)&#10;&#10;Rewrote the snake logic and moved the logic to the class.">
-      <change afterPath="$PROJECT_DIR$/src/Colours.py" afterDir="false" />
+    <list default="true" id="e532d0eb-5942-400e-a6a3-010898e7d46d" name="Changes" comment="Changed enum slightly and colours to work well.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Direction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Direction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GridLogic.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GridLogic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SnakeMachineLearning.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/SnakeMachineLearning.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628078031257</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Changed enum slightly and colours to work well.">
+      <created>1628079757893</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1628079757893</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,6 +120,7 @@
     <MESSAGE value="Bringing it back." />
     <MESSAGE value="CLEAN CLEAN CLEAN" />
     <MESSAGE value="Added&#10;- Direction enum&#10;- Grid logic in its own class (GridLogic.py)&#10;- Random object in its own class (RandomObject.py)&#10;- Snake in its own class (Snake.py)&#10;- Direction enum (Direction.py)&#10;&#10;Rewrote the snake logic and moved the logic to the class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;- Direction enum&#10;- Grid logic in its own class (GridLogic.py)&#10;- Random object in its own class (RandomObject.py)&#10;- Snake in its own class (Snake.py)&#10;- Direction enum (Direction.py)&#10;&#10;Rewrote the snake logic and moved the logic to the class." />
+    <MESSAGE value="Changed enum slightly and colours to work well." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed enum slightly and colours to work well." />
   </component>
 </project>

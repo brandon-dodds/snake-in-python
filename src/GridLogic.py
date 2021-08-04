@@ -2,7 +2,6 @@ from src.Colours import Colours
 
 
 class GridLogic:
-    # Defining colour constants
     HEIGHT = 16
     WIDTH = 16
     MARGIN = 3
