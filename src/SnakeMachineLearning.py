@@ -1,6 +1,7 @@
 import pygame as pg
 import time
 
+from src.Colours import Colours
 from src.GridLogic import GridLogic
 from src.Snake import Snake
 
@@ -31,22 +32,14 @@ def main():
 
             # USER INPUT
 
-        screen.fill(grid_controller.BLACK)
+        screen.fill(Colours.BLACK)
 
         # This populates the grid with the white squares. and when a row and a column is equal to one,
         # it turns the colour green.
 
         for row in range(grid_controller.AMOUNT_PER_LINE):
             for column in range(grid_controller.AMOUNT_PER_LINE):
-                color = grid_controller.WHITE
-                if grid_controller.grid[row][column] == 0:
-                    color = grid_controller.WHITE
-                elif grid_controller.grid[row][column] == 1:
-                    color = grid_controller.GREEN
-                elif grid_controller.grid[row][column] == 2:
-                    color = grid_controller.RED
-                elif grid_controller.grid[row][column] == 3:
-                    color = grid_controller.PURPLE
+                color = grid_controller.grid[row][column]
 
                 pg.draw.rect(screen,
                              color,
