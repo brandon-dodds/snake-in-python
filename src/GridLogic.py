@@ -1,4 +1,4 @@
-from src.Colours import Colours
+import Colours
 
 
 class GridLogic:

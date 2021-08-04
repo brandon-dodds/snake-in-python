@@ -1,7 +1,7 @@
 import pygame as pg
 import time
 
-from src.Colours import Colours
+import Colours
 from src.GridLogic import GridLogic
 from src.Snake import Snake
 
