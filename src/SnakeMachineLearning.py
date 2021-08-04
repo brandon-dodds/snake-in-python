@@ -1,223 +1,68 @@
-from collections import deque
-import random
 import pygame as pg
 import time
-# Defining colour constants.
 
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREEN = (42, 201, 42)
-RED = (240, 34, 54)
-PURPLE = (170, 94, 181)
-HEIGHT = 16
-WIDTH = 16
-MARGIN = 3
-AMOUNT_PER_LINE = 16
+from src.GridLogic import GridLogic
+from src.Snake import Snake
 
 
-# Creating the grid that will be populated.
+def main():
+    grid_controller = GridLogic()
 
-grid = [] # This is the grid 2d array.
-for row in range(AMOUNT_PER_LINE): # You can change these values for bigger map size.
-    grid.append([])
-    for column in range(AMOUNT_PER_LINE):
-        grid[row].append(0)  # Creates a 2d array which my grid will be based.
+    pg.init()
 
-# Creating the snakeList object.
+    # The size of the window that will be a constant. Edit if you want the window size to be bigger.
+    WINDOW_SIZE = [308, 308]
 
-class Snake:
-    x_coordinate = 0 # These are the X and Y coordinates stored for each snake.
-    y_coordinate = 0
-    direction = "UP" # This is the direction the snake is going.
+    screen = pg.display.set_mode(WINDOW_SIZE)
 
-    def __init__(self, x_coordinate, y_coordinate): # This is executed when a snake is created.
-        grid[x_coordinate][y_coordinate] = 1 # The place where it is created is '1' means that the block is green.
-        self.x_coordinate = x_coordinate # The X and Y coordinates become the new X and Y coordinates.
-        self.y_coordinate = y_coordinate
+    pg.display.set_caption("Snake Game")
 
-    def make_white(self):
-        grid[self.x_coordinate][self.y_coordinate] = 0 #This makes the grid space white.
+    # Important variables and declaration of objects.
 
-    def make_green(self, direction):
+    done = False
+    clock = pg.time.Clock()
 
-        if direction == "UP":
-            grid[self.x_coordinate - 1][self.y_coordinate] = 1
-            self.x_coordinate = self.x_coordinate - 1
-            self.direction = "UP"
+    while not done:
 
-        elif direction == "DOWN":
-            grid[self.x_coordinate + 1][self.y_coordinate] = 1
-            self.x_coordinate = self.x_coordinate + 1
-            self.direction = "DOWN"
+        for event in pg.event.get():
+            # QUITTING THE PROGRAM.
+            if event.type == pg.QUIT:  # If user clicked close
+                done = True  # Flag that we are done so we exit this loop
 
-        elif direction == "LEFT":
-            grid[self.x_coordinate][self.y_coordinate - 1] = 1
-            self.y_coordinate = self.y_coordinate - 1
-            self.direction = "LEFT"
+            # USER INPUT
 
-        elif direction == "RIGHT":
-            grid[self.x_coordinate][self.y_coordinate + 1] = 1
-            self.y_coordinate = self.y_coordinate + 1
-            self.direction = "RIGHT"
+        screen.fill(grid_controller.BLACK)
 
-# Creating the random item object.
+        # This populates the grid with the white squares. and when a row and a column is equal to one,
+        # it turns the colour green.
 
-class RandomObject(object):
-    x_coordinate = 0
-    y_coordinate = 0
+        for row in range(grid_controller.AMOUNT_PER_LINE):
+            for column in range(grid_controller.AMOUNT_PER_LINE):
+                color = grid_controller.WHITE
+                if grid_controller.grid[row][column] == 0:
+                    color = grid_controller.WHITE
+                elif grid_controller.grid[row][column] == 1:
+                    color = grid_controller.GREEN
+                elif grid_controller.grid[row][column] == 2:
+                    color = grid_controller.RED
+                elif grid_controller.grid[row][column] == 3:
+                    color = grid_controller.PURPLE
 
-    def __init__(self):
-        self.x_coordinate = random.randint(1, 15)
-        self.y_coordinate = random.randint(1, 15)
-        if snakeList[0].x_coordinate == self.x_coordinate and snakeList[0].y_coordinate == self.y_coordinate:
-            self.__init__()
+                pg.draw.rect(screen,
+                             color,
+                             [(grid_controller.MARGIN + grid_controller.WIDTH) * column + grid_controller.MARGIN,
+                              (grid_controller.MARGIN + grid_controller.HEIGHT) * row + grid_controller.MARGIN,
+                              grid_controller.WIDTH,
+                              grid_controller.HEIGHT])
 
-        grid[self.x_coordinate][self.y_coordinate] = 2
+        snake = Snake(1, 1)
+        grid_controller.make_green(snake.snake_body[0][0], snake.snake_body[0][1])
 
-    def new_item(self):
-        self.x_coordinate = random.randint(1, 15)
-        self.y_coordinate = random.randint(1, 15)
-        for x in range(len(snakeList)):
-            if self.x_coordinate == snakeList[x].x_coordinate and self.y_coordinate == snakeList[x].y_coordinate:
-                self.new_item()
+        clock.tick(60)
 
-        grid[self.x_coordinate][self.y_coordinate] = 2
+        pg.display.flip()
 
-# Defining the new move function
-
-movementList = deque([])
-
-def move(direction):
-    movementList.appendleft(direction)
-    for x in range(len(snakeList)):
-        snakeList[x].make_white()
-    for x in range(len(snakeList)):
-        snakeList[x].make_green(movementList[x])
-
-# Beginning pygame.
-pg.init()
-
-# The size of the window that will be a constant. Edit if you want the window size to be bigger.
-
-WINDOW_SIZE = [308, 308]
-
-screen = pg.display.set_mode(WINDOW_SIZE)
-
-pg.display.set_caption("Snake Game")
-
-# Important variables and declaration of objects.
-
-current_snake = 0
-score = 0
-snakeList = []
-x = Snake(8, 8)
-snakeList.append(x)
-randomItem = RandomObject()
-
-done = False
-clock = pg.time.Clock()
-
-while not done:
-
-    for event in pg.event.get():
-        # QUITTING THE PROGRAM.
-        if event.type == pg.QUIT:  # If user clicked close
-            done = True  # Flag that we are done so we exit this loop
-
-        # USER INPUT
-        elif pg.key.get_pressed()[pg.K_q] != 0:
-            done = True
-
-        try:
-            if pg.key.get_pressed()[pg.K_w] or pg.key.get_pressed()[pg.K_UP]:
-                move("UP")
-                time.sleep(0.01667)
-
-            elif pg.key.get_pressed()[pg.K_s] or pg.key.get_pressed()[pg.K_DOWN]:
-                move("DOWN")
-                time.sleep(0.01667)
-
-            elif pg.key.get_pressed()[pg.K_a] or pg.key.get_pressed()[pg.K_LEFT]:
-                move("LEFT")
-                time.sleep(0.01667)
-
-            elif pg.key.get_pressed()[pg.K_d] or pg.key.get_pressed()[pg.K_RIGHT]:
-                move("RIGHT")
-                time.sleep(0.01667)
+    pg.quit()
 
 
-        except IndexError:
-            done = True
-
-        # CONTROL STATEMENTS
-
-        grid[snakeList[0].x_coordinate][snakeList[0].y_coordinate] = 3
-
-        for x in range(1, len(snakeList)):
-            if snakeList[0].x_coordinate == snakeList[x].x_coordinate and snakeList[0].y_coordinate == snakeList[x].y_coordinate:
-                print("You have hit yourself!")
-                done = True
-
-        for x in range(len(snakeList)):
-            if snakeList[x].x_coordinate > 15 or snakeList[x].x_coordinate < 0:
-                print("You are out of range!")
-                done = True
-
-            elif snakeList[x].y_coordinate > 15 or snakeList[x].y_coordinate < 0:
-                print("You are out of range!")
-                done = True
-
-        if snakeList[0].x_coordinate == randomItem.x_coordinate and \
-                snakeList[0].y_coordinate == randomItem.y_coordinate:
-            print("You got the item!")
-            score += 10
-            print(score)
-
-            if snakeList[current_snake].direction == "UP":
-                x = Snake(snakeList[current_snake].x_coordinate + 1, snakeList[current_snake].y_coordinate)
-
-            elif snakeList[current_snake].direction == "DOWN":
-                x = Snake(snakeList[current_snake].x_coordinate - 1, snakeList[current_snake].y_coordinate)
-
-            elif snakeList[current_snake].direction == "LEFT":
-                x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate + 1)
-
-            elif snakeList[current_snake].direction == "RIGHT":
-                x = Snake(snakeList[current_snake].x_coordinate, snakeList[current_snake].y_coordinate - 1)
-
-            snakeList.append(x)
-            current_snake += 1
-            randomItem.new_item()
-            
-        if score == 2560:
-            print("You won the game!")
-            done = True
-
-    screen.fill(BLACK)
-
-    # This populates the grid with the white squares. and when a row and a column is equal to one,
-    # it turns the colour green.
-
-    for row in range(AMOUNT_PER_LINE):
-        for column in range(AMOUNT_PER_LINE):
-            color = WHITE
-            if grid[row][column] == 0:
-                color = WHITE
-            elif grid[row][column] == 1:
-                color = GREEN
-            elif grid[row][column] == 2:
-                color = RED
-            elif grid[row][column] == 3:
-                color = PURPLE
-            pg.draw.rect(screen,
-                         color,
-                         [(MARGIN + WIDTH) * column + MARGIN,
-                          (MARGIN + HEIGHT) * row + MARGIN,
-                          WIDTH,
-                          HEIGHT])
-
-    clock.tick(60)
-
-    pg.display.flip()
-
-pg.quit()
+main()
