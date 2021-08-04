@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e532d0eb-5942-400e-a6a3-010898e7d46d" name="Changes" comment="Neat">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Colours.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Colours.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GridLogic.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GridLogic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SnakeMachineLearning.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/SnakeMachineLearning.py" afterDir="false" />
-    </list>
+    <list default="true" id="e532d0eb-5942-400e-a6a3-010898e7d46d" name="Changes" comment="Changed it from a class to just a file full of Const" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628079992029</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Changed it from a class to just a file full of Const">
+      <created>1628080331887</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1628080331887</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -131,6 +133,7 @@
     <MESSAGE value="Added&#10;- Direction enum&#10;- Grid logic in its own class (GridLogic.py)&#10;- Random object in its own class (RandomObject.py)&#10;- Snake in its own class (Snake.py)&#10;- Direction enum (Direction.py)&#10;&#10;Rewrote the snake logic and moved the logic to the class." />
     <MESSAGE value="Changed enum slightly and colours to work well." />
     <MESSAGE value="Neat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Neat" />
+    <MESSAGE value="Changed it from a class to just a file full of Const" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed it from a class to just a file full of Const" />
   </component>
 </project>
