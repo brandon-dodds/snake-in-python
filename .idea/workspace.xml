@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e532d0eb-5942-400e-a6a3-010898e7d46d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/SnakeMachineLearning.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.vscode/settings.json" beforeDir="false" />
+    <list default="true" id="e532d0eb-5942-400e-a6a3-010898e7d46d" name="Changes" comment="Bringing it back.">
+      <change beforePath="$PROJECT_DIR$/src/.SnakeMachineLearning.py.swp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SnakeMachineLearning.spec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/SnakeMachineLearning" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/SnakeMachineLearning.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/SnakeMachineLearning.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/out00-Analysis.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/out00-COLLECT.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/out00-EXE.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/out00-PKG.pkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/out00-PKG.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/out00-PYZ.pyz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/out00-PYZ.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/SnakeMachineLearning/warnSnakeMachineLearning.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/SnakeMachineLearning" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_bz2.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_codecs_cn.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_codecs_hk.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_codecs_iso2022.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_codecs_jp.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_codecs_kr.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_codecs_tw.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_ctypes.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_hashlib.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_lzma.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_multibytecodec.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_multiprocessing.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_opcode.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/_ssl.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/include/python3.5m/pyconfig.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/lib/python3.5/config-3.5m-x86_64-linux-gnu/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/lib2to3/Grammar.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/lib2to3/PatternGrammar.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libFLAC-54bf3553.so.8.3.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libSDL-1-9a9431b0.2.so.0.11.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libSDL_image-1-6e69643a.2.so.0.8.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libSDL_mixer-1-ec459934.2.so.0.12.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libSDL_ttf-2-a37ff1d4.0.so.0.10.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libX11.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libXau.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libXdmcp.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libasound-95d13a7d.so.2.0.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libbz2.so.1.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libcap-5fec18ee.so.1.10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libcrypto.so.1.0.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libdbus-1-30e56626.so.3.4.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libexpat.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libfluidsynth-c29b5c1f.so.1.5.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libfreetype-56747121.so.6.12.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libgcc_s.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libglib-2.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libgthread-2.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libjpeg-bd53fca1.so.62.0.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/liblzma.so.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libmikmod-fabcac29.so.2.0.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libogg-c60f4c4b.so.0.8.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libpcre.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libpng16-6d605bc4.so.16.23.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libpython3.5m.so.1.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libreadline.so.7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libsmpeg-0-83e21435.4.so.0.1.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libsndfile-d5ecee11.so.1.0.17" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libssl.so.1.0.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libstdc++.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libtiff-97e44e95.so.3.8.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libtinfo.so.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libvorbis-7feb4b9b.so.0.4.8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libvorbisfile-f207f3a6.so.3.3.7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libwebp-0851406f.so.6.0.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libz-a147dcb0.so.1.2.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/libz.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/mmap.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame._freetype.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.base.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.bufferproxy.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.cdrom.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.color.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.constants.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.display.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.draw.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.event.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.fastevent.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.font.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.image.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.imageext.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.joystick.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.key.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.mask.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.math.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.mixer.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.mixer_music.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.mouse.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.overlay.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.pixelarray.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.pixelcopy.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.rect.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.rwobject.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.scrap.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.surface.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.surflock.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.time.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/pygame.transform.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/readline.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/resource.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/SnakeMachineLearning/termios.so" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +169,29 @@
       <option name="presentableId" value="Default" />
       <updated>1628069003799</updated>
     </task>
+    <task id="LOCAL-00001" summary="Bringing it back.">
+      <created>1628069428855</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1628069428855</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Bringing it back." />
+    <option name="LAST_COMMIT_MESSAGE" value="Bringing it back." />
   </component>
 </project>
