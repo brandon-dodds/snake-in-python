@@ -1,12 +1,14 @@
 import pygame as pg
 
 import Colours
+from src.Direction import Direction
 from src.GridLogic import GridLogic
 from src.Snake import Snake
 
 
 def main():
     grid_controller = GridLogic()
+    snake = Snake(1, 1)
 
     pg.init()
 
@@ -28,7 +30,11 @@ def main():
             # QUITTING THE PROGRAM.
             if event.type == pg.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
-
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_LEFT or event.key == pg.K_a:
+                    snake.snake_movement(Direction.LEFT)
+                elif event.key == pg.K_UP or event.key == pg.K_w:
+                    snake.snake_movement(Direction.UP)
             # USER INPUT
 
         screen.fill(Colours.BLACK)
@@ -47,7 +53,6 @@ def main():
                               grid_controller.WIDTH,
                               grid_controller.HEIGHT])
 
-        snake = Snake(1, 1)
         grid_controller.make_green(snake.snake_body[0][0], snake.snake_body[0][1])
 
         clock.tick(60)

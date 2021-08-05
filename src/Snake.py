@@ -11,6 +11,7 @@ class Snake:
         self.snake_body.append([x_coordinate, y_coordinate])
 
     def snake_movement(self, direction):
+        self.movementList.append(direction)
 
         for chunk in self.snake_body:
             for movement in self.movementList:
