@@ -1,21 +1,21 @@
 import pygame as pg
 
 import Colours
-from src.Direction import Direction
-from src.GridLogic import GridLogic
-from src.Snake import Snake
+from Direction import Direction
+from GridLogic import GridLogic
+from Snake import Snake
 
 
 def main():
     grid_controller = GridLogic()
-    snake = Snake(1, 1)
+    snake = Snake(10, 10)
 
     pg.init()
 
     # The size of the window that will be a constant. Edit if you want the window size to be bigger.
-    WINDOW_SIZE = [308, 308]
+    window_size = [308, 308]
 
-    screen = pg.display.set_mode(WINDOW_SIZE)
+    screen = pg.display.set_mode(window_size)
 
     pg.display.set_caption("Snake Game")
 
@@ -53,7 +53,8 @@ def main():
                               grid_controller.WIDTH,
                               grid_controller.HEIGHT])
 
-        grid_controller.make_green(snake.snake_body[0][0], snake.snake_body[0][1])
+        for snake_chunk in snake.snake_body:
+            grid_controller.make_green(snake_chunk[0], snake_chunk[1])
 
         clock.tick(60)
 
