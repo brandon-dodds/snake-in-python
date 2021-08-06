@@ -7,14 +7,14 @@ class GridLogic:
     MARGIN = 3
     AMOUNT_PER_LINE = 16
 
-    grid = []  # This is the grid 2d array.
+    grid = []
 
     def __init__(self):
 
-        for row in range(self.AMOUNT_PER_LINE):  # You can change these values for bigger map size.
+        for row in range(self.AMOUNT_PER_LINE):
             self.grid.append([])
             for column in range(self.AMOUNT_PER_LINE):
-                self.grid[row].append(Colours.WHITE)  # Creates a 2d array which my grid will be based.
+                self.grid[row].append(Colours.WHITE)
 
     def make_white(self, x_coordinate, y_coordinate):
         self.grid[x_coordinate][y_coordinate] = Colours.WHITE

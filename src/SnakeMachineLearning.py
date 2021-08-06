@@ -12,14 +12,11 @@ def main():
 
     pg.init()
 
-    # The size of the window that will be a constant. Edit if you want the window size to be bigger.
     window_size = [308, 308]
 
     screen = pg.display.set_mode(window_size)
 
     pg.display.set_caption("Snake Game")
-
-    # Important variables and declaration of objects.
 
     done = False
     clock = pg.time.Clock()
@@ -27,20 +24,23 @@ def main():
     while not done:
 
         for event in pg.event.get():
-            # QUITTING THE PROGRAM.
-            if event.type == pg.QUIT:  # If user clicked close
-                done = True  # Flag that we are done so we exit this loop
+            if event.type == pg.QUIT:
+                done = True
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_LEFT or event.key == pg.K_a:
+                    grid_white_to_snake(grid_controller, snake)
                     snake.snake_movement(Direction.LEFT)
                 elif event.key == pg.K_UP or event.key == pg.K_w:
+                    grid_white_to_snake(grid_controller, snake)
                     snake.snake_movement(Direction.UP)
-            # USER INPUT
+                elif event.key == pg.K_DOWN or event.key == pg.K_s:
+                    grid_white_to_snake(grid_controller, snake)
+                    snake.snake_movement(Direction.DOWN)
+                elif event.key == pg.K_RIGHT or event.key == pg.K_d:
+                    grid_white_to_snake(grid_controller, snake)
+                    snake.snake_movement(Direction.RIGHT)
 
         screen.fill(Colours.BLACK)
-
-        # This populates the grid with the white squares. and when a row and a column is equal to one,
-        # it turns the colour green.
 
         for row in range(grid_controller.AMOUNT_PER_LINE):
             for column in range(grid_controller.AMOUNT_PER_LINE):
@@ -61,6 +61,11 @@ def main():
         pg.display.flip()
 
     pg.quit()
+
+
+def grid_white_to_snake(grid, snake):
+    for snake_chunk in snake.snake_body:
+        grid.make_white(snake_chunk[0], snake_chunk[1])
 
 
 main()
