@@ -3,11 +3,13 @@ import Colours
 from Direction import Direction
 from Grid import Grid
 from Snake import Snake
+from RandomObject import RandomObject
 
 
 def main():
     grid = Grid()
-    snake = Snake(10, 10)
+    snake = Snake(15, 15)
+    random_object = RandomObject()
 
     pg.init()
     window_size = [308, 308]
@@ -45,8 +47,9 @@ def main():
                               grid.HEIGHT])
 
         for snake_chunk in snake.snake_body:
-            grid.make_green(snake_chunk[0], snake_chunk[1])
+            grid.make_colour(snake_chunk[0], snake_chunk[1], Colours.GREEN)
 
+        grid.make_colour(random_object.x_coordinate, random_object.y_coordinate, Colours.RED)
         clock.tick(60)
         pg.display.flip()
 
@@ -55,7 +58,7 @@ def main():
 
 def update_grid_to_snake_movement(grid, snake, direction):
     for snake_chunk in snake.snake_body:
-        grid.make_white(snake_chunk[0], snake_chunk[1])
+        grid.make_colour(snake_chunk[0], snake_chunk[1], Colours.WHITE)
     snake.snake_movement(direction)
 
 

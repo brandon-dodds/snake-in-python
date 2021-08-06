@@ -16,8 +16,5 @@ class Grid:
             for column in range(self.AMOUNT_PER_LINE):
                 self.grid[row].append(Colours.WHITE)
 
-    def make_white(self, x_coordinate, y_coordinate):
-        self.grid[x_coordinate][y_coordinate] = Colours.WHITE
-
-    def make_green(self, x_coordinate, y_coordinate):
-        self.grid[x_coordinate][y_coordinate] = Colours.GREEN
+    def make_colour(self, x_coordinate, y_coordinate, colour):
+        self.grid[x_coordinate][y_coordinate] = colour
