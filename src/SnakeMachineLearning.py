@@ -1,5 +1,4 @@
 import pygame as pg
-
 import Colours
 from Direction import Direction
 from Grid import Grid
@@ -11,13 +10,9 @@ def main():
     snake = Snake(10, 10)
 
     pg.init()
-
     window_size = [308, 308]
-
     screen = pg.display.set_mode(window_size)
-
     pg.display.set_caption("Snake Game")
-
     done = False
     clock = pg.time.Clock()
 
@@ -53,7 +48,6 @@ def main():
             grid.make_green(snake_chunk[0], snake_chunk[1])
 
         clock.tick(60)
-
         pg.display.flip()
 
     pg.quit()
