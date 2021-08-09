@@ -26,8 +26,9 @@ class Snake:
             elif self.movementList[self.snake_body.index(chunk)] == Direction.RIGHT:
                 chunk[1] = chunk[1] + 1
 
-    def snake_check_collision(self):
-        for x in self.snake_body:
-            for y in self.snake_body:
-                if x == y:
-                    print("Collision!")
+    def snake_check_self_collision(self):
+        for chunk in self.snake_body[1:]:
+            return chunk == self.snake_body[0]
+
+    def snake_add_body(self):
+        self.snake_body.append([self.snake_body[0][0], self.snake_body[0][1]])

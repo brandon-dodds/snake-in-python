@@ -32,6 +32,7 @@ def main():
                     update_grid_to_snake_movement(grid, snake, Direction.DOWN)
                 elif event.key == pg.K_RIGHT or event.key == pg.K_d:
                     update_grid_to_snake_movement(grid, snake, Direction.RIGHT)
+                check_collisions(snake, random_object)
 
         screen.fill(Colours.BLACK)
 
@@ -60,6 +61,17 @@ def update_grid_to_snake_movement(grid, snake, direction):
     for snake_chunk in snake.snake_body:
         grid.make_colour(snake_chunk[0], snake_chunk[1], Colours.WHITE)
     snake.snake_movement(direction)
+
+
+def snake_object_collision(snake, random_object):
+    return snake.snake_body[0] == [random_object.x_coordinate, random_object.y_coordinate]
+
+
+def check_collisions(snake, random_object):
+    if snake_object_collision(snake, random_object):
+        snake.snake_add_body()
+    if snake.snake_check_self_collision():
+        print("whack")
 
 
 main()
