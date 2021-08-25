@@ -6,72 +6,81 @@ from Snake import Snake
 from RandomObject import RandomObject
 
 
-def main():
-    grid = Grid()
-    snake = Snake(15, 15)
-    random_object = RandomObject()
+class Game:
 
-    pg.init()
-    window_size = [308, 308]
-    screen = pg.display.set_mode(window_size)
-    pg.display.set_caption("Snake Game")
-    done = False
-    clock = pg.time.Clock()
+    def __init__(self):
+        self.grid = Grid()
+        self.snake = Snake(15, 15)
+        self.random_object = RandomObject()
 
-    while not done:
+        pg.init()
+        window_size = [308, 308]
+        self.screen = pg.display.set_mode(window_size)
+        pg.display.set_caption("Snake Game")
+        self.done = False
+        self.clock = pg.time.Clock()
 
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                done = True
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_LEFT or event.key == pg.K_a:
-                    update_grid_to_snake_movement(grid, snake, Direction.LEFT)
-                elif event.key == pg.K_UP or event.key == pg.K_w:
-                    update_grid_to_snake_movement(grid, snake, Direction.UP)
-                elif event.key == pg.K_DOWN or event.key == pg.K_s:
-                    update_grid_to_snake_movement(grid, snake, Direction.DOWN)
-                elif event.key == pg.K_RIGHT or event.key == pg.K_d:
-                    update_grid_to_snake_movement(grid, snake, Direction.RIGHT)
-                check_collisions(snake, random_object)
+    def render(self):
+        self.screen.fill(Colours.BLACK)
 
-        screen.fill(Colours.BLACK)
+        for row in range(self.grid.AMOUNT_PER_LINE):
+            for column in range(self.grid.AMOUNT_PER_LINE):
+                color = self.grid.grid[row][column]
 
-        for row in range(grid.AMOUNT_PER_LINE):
-            for column in range(grid.AMOUNT_PER_LINE):
-                color = grid.grid[row][column]
-
-                pg.draw.rect(screen,
+                pg.draw.rect(self.screen,
                              color,
-                             [(grid.MARGIN + grid.WIDTH) * column + grid.MARGIN,
-                              (grid.MARGIN + grid.HEIGHT) * row + grid.MARGIN,
-                              grid.WIDTH,
-                              grid.HEIGHT])
+                             [(self.grid.MARGIN + self.grid.WIDTH) * column + self.grid.MARGIN,
+                              (self.grid.MARGIN + self.grid.HEIGHT) * row + self.grid.MARGIN,
+                              self.grid.WIDTH,
+                              self.grid.HEIGHT])
 
-        for snake_chunk in snake.snake_body:
-            grid.make_colour(snake_chunk[0], snake_chunk[1], Colours.GREEN)
+        for snake_chunk in self.snake.snake_body:
+            self.grid.make_colour(snake_chunk[0], snake_chunk[1], Colours.GREEN)
 
-        grid.make_colour(random_object.x_coordinate, random_object.y_coordinate, Colours.RED)
-        clock.tick(60)
+        if self.random_object is not None:
+            self.grid.make_colour(self.random_object.x_coordinate, self.random_object.y_coordinate, Colours.RED)
+
+        self.clock.tick(60)
         pg.display.flip()
 
-    pg.quit()
+    def update_grid_to_snake_movement(self, direction):
+        for snake_chunk in self.snake.snake_body:
+            self.grid.make_colour(snake_chunk[0], snake_chunk[1], Colours.WHITE)
+        self.snake.snake_movement(direction)
+
+    def snake_object_collision(self):
+        if self.random_object is None:
+            return False
+        return self.snake.snake_body[0] == [self.random_object.x_coordinate, self.random_object.y_coordinate]
+
+    def check_collisions(self):
+        if self.snake_object_collision():
+            self.snake.snake_add_body()
+            self.random_object = RandomObject()
+        if self.snake.snake_check_self_collision():
+            print("whack")
+
+    def main(self):
+        while not self.done:
+
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    self.done = True
+                if event.type == pg.KEYDOWN:
+                    if event.key == pg.K_LEFT or event.key == pg.K_a:
+                        self.update_grid_to_snake_movement(Direction.LEFT)
+                    elif event.key == pg.K_UP or event.key == pg.K_w:
+                        self.update_grid_to_snake_movement(Direction.UP)
+                    elif event.key == pg.K_DOWN or event.key == pg.K_s:
+                        self.update_grid_to_snake_movement(Direction.DOWN)
+                    elif event.key == pg.K_RIGHT or event.key == pg.K_d:
+                        self.update_grid_to_snake_movement(Direction.RIGHT)
+                    self.check_collisions()
+
+            self.render()
+
+        pg.quit()
 
 
-def update_grid_to_snake_movement(grid, snake, direction):
-    for snake_chunk in snake.snake_body:
-        grid.make_colour(snake_chunk[0], snake_chunk[1], Colours.WHITE)
-    snake.snake_movement(direction)
-
-
-def snake_object_collision(snake, random_object):
-    return snake.snake_body[0] == [random_object.x_coordinate, random_object.y_coordinate]
-
-
-def check_collisions(snake, random_object):
-    if snake_object_collision(snake, random_object):
-        snake.snake_add_body()
-    if snake.snake_check_self_collision():
-        print("whack")
-
-
-main()
+game = Game()
+game.main()

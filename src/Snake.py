@@ -29,8 +29,7 @@ class Snake:
                 chunk[1] = chunk[1] + 1
 
     def snake_check_self_collision(self):
-        for chunk in self.snake_body[1:]:
-            return chunk == self.snake_body[0]
+        return self.snake_body[0] in self.snake_body[1:]
 
     def snake_add_body(self):
         self.snake_body.append([self.last_chunk_previous_movement[0], self.last_chunk_previous_movement[1]])
