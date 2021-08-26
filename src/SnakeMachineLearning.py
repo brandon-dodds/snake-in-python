@@ -60,12 +60,12 @@ class Game:
         return self.snake.snake_body[0] == [self.random_object.x_coordinate, self.random_object.y_coordinate]
 
     def check_collisions(self):
-        if self.snake_object_collision() and len(self.snake.snake_body) < 256:
+        if self.snake_object_collision():
+            if len(self.snake.snake_body) == 255:
+                game_exit()
             self.snake.snake_body.append(
                 [self.snake.last_chunk_previous_movement[0], self.snake.last_chunk_previous_movement[1]])
             self.random_object = RandomObject(self.snake.snake_body)
-        elif len(self.snake.snake_body) == 256:
-            game_exit()
         if self.snake.snake_body[0] in self.snake.snake_body[1:]:
             game_exit()
 
