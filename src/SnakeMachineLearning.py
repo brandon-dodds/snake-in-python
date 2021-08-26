@@ -16,8 +16,8 @@ def game_exit():
 class Game:
     def __init__(self):
         self.grid = Grid()
-        self.snake = Snake(15, 15)
-        self.random_object = RandomObject(self.snake.snake_body)
+        self.snake = Snake(self.grid.AMOUNT_PER_LINE)
+        self.random_object = RandomObject(self.snake.snake_body, self.grid.AMOUNT_PER_LINE)
 
         pg.init()
         window_size = [308, 308]
@@ -35,10 +35,10 @@ class Game:
 
                 pg.draw.rect(self.screen,
                              color,
-                             [(self.grid.MARGIN + self.grid.WIDTH) * column + self.grid.MARGIN,
-                              (self.grid.MARGIN + self.grid.HEIGHT) * row + self.grid.MARGIN,
-                              self.grid.WIDTH,
-                              self.grid.HEIGHT])
+                             [(self.grid.MARGIN + self.grid.AMOUNT_PER_LINE) * column + self.grid.MARGIN,
+                              (self.grid.MARGIN + self.grid.AMOUNT_PER_LINE) * row + self.grid.MARGIN,
+                              self.grid.AMOUNT_PER_LINE,
+                              self.grid.AMOUNT_PER_LINE])
 
         for snake_chunk in self.snake.snake_body:
             self.grid.make_colour(snake_chunk[0], snake_chunk[1], Colours.GREEN)
@@ -52,7 +52,7 @@ class Game:
     def update_grid_to_snake_movement(self, direction):
         for snake_chunk in self.snake.snake_body:
             self.grid.make_colour(snake_chunk[0], snake_chunk[1], Colours.WHITE)
-        self.snake.snake_movement(direction)
+        self.snake.snake_movement(direction, self.grid.AMOUNT_PER_LINE)
 
     def snake_object_collision(self):
         if self.random_object is None:
@@ -61,11 +61,11 @@ class Game:
 
     def check_collisions(self):
         if self.snake_object_collision():
-            if len(self.snake.snake_body) == 255:
+            if len(self.snake.snake_body) == self.grid.AMOUNT_PER_LINE ** 2 - 1:
                 game_exit()
             self.snake.snake_body.append(
                 [self.snake.last_chunk_previous_movement[0], self.snake.last_chunk_previous_movement[1]])
-            self.random_object = RandomObject(self.snake.snake_body)
+            self.random_object = RandomObject(self.snake.snake_body, self.grid.AMOUNT_PER_LINE)
         if self.snake.snake_body[0] in self.snake.snake_body[1:]:
             game_exit()
 

@@ -2,8 +2,6 @@ import Colours
 
 
 class Grid:
-    HEIGHT = 16
-    WIDTH = 16
     MARGIN = 3
     AMOUNT_PER_LINE = 16
 
