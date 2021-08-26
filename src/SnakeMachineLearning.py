@@ -64,7 +64,7 @@ class Game:
             self.snake.snake_body.append(
                 [self.snake.last_chunk_previous_movement[0], self.snake.last_chunk_previous_movement[1]])
             self.random_object = RandomObject(self.snake.snake_body)
-        else:
+        elif len(self.snake.snake_body) == 256:
             game_exit()
         if self.snake.snake_body[0] in self.snake.snake_body[1:]:
             game_exit()
