@@ -16,20 +16,14 @@ class Snake:
         self.last_chunk_previous_movement = self.snake_body[-1].copy()
         for chunk in self.snake_body:
 
-            if self.movement_list[self.snake_body.index(chunk)] == Direction.UP:
+            if self.movement_list[self.snake_body.index(chunk)] == Direction.UP and chunk[0] - 1 >= 0:
                 chunk[0] = chunk[0] - 1
 
-            elif self.movement_list[self.snake_body.index(chunk)] == Direction.DOWN:
+            elif self.movement_list[self.snake_body.index(chunk)] == Direction.DOWN and chunk[0] + 1 <= 15:
                 chunk[0] = chunk[0] + 1
 
-            elif self.movement_list[self.snake_body.index(chunk)] == Direction.LEFT:
+            elif self.movement_list[self.snake_body.index(chunk)] == Direction.LEFT and chunk[1] - 1 >= 0:
                 chunk[1] = chunk[1] - 1
 
-            elif self.movement_list[self.snake_body.index(chunk)] == Direction.RIGHT:
+            elif self.movement_list[self.snake_body.index(chunk)] == Direction.RIGHT and chunk[1] + 1 <= 15:
                 chunk[1] = chunk[1] + 1
-
-    def snake_check_self_collision(self):
-        return self.snake_body[0] in self.snake_body[1:]
-
-    def snake_add_body(self):
-        self.snake_body.append([self.last_chunk_previous_movement[0], self.last_chunk_previous_movement[1]])
