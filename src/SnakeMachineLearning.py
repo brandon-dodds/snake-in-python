@@ -8,8 +8,12 @@ from Snake import Snake
 from RandomObject import RandomObject
 
 
-class Game:
+def game_exit():
+    pg.quit()
+    sys.exit()
 
+
+class Game:
     def __init__(self):
         self.grid = Grid()
         self.snake = Snake(15, 15)
@@ -56,13 +60,14 @@ class Game:
         return self.snake.snake_body[0] == [self.random_object.x_coordinate, self.random_object.y_coordinate]
 
     def check_collisions(self):
-        if self.snake_object_collision():
+        if self.snake_object_collision() and len(self.snake.snake_body) < 256:
             self.snake.snake_body.append(
                 [self.snake.last_chunk_previous_movement[0], self.snake.last_chunk_previous_movement[1]])
             self.random_object = RandomObject(self.snake.snake_body)
+        else:
+            game_exit()
         if self.snake.snake_body[0] in self.snake.snake_body[1:]:
-            pg.quit()
-            sys.exit()
+            game_exit()
 
     def main(self):
         while not self.done:
